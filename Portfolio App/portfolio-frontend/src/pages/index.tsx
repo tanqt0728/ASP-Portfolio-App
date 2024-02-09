@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import useAuth from '../hooks/useAuth';
+import useAuth from "../hooks/useAuth";
+import * as React from "react";
+import { Button } from "@nextui-org/button";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -116,6 +118,7 @@ export default function Home() {
           </p>
         </a>
       </div>
+      <Button>Press me</Button>
     </main>
   );
 }
