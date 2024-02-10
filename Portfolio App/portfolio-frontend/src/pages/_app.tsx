@@ -4,7 +4,7 @@ import type { AppProps } from "next/app";
 import NavBar from "../components/NavBar";
 import * as React from "react";
 import { NextUIProvider } from "@nextui-org/system";
-import 'grapesjs/dist/css/grapes.min.css';
+import "grapesjs/dist/css/grapes.min.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
