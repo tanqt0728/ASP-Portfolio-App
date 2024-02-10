@@ -1,11 +1,14 @@
-// Editor.js
 import React, { useState, useEffect } from "react";
+import { useRouter } from 'next/router';
 import grapesjs from "grapesjs";
 import gjsPresetWebpage from "grapesjs-preset-webpage"
-import styles from "../components/editor.module.scss";
+import styles from '../../components/editor.module.scss';
 
 function Editor() {
   const [editor, setEditor] = useState(null);
+
+  const router = useRouter();
+  const { pageId } = router.query;
 
   useEffect(() => {
     const editorInstance = grapesjs.init({
@@ -23,7 +26,7 @@ function Editor() {
     return () => {
       editorInstance.destroy();
     };
-  }, []);
+  }, [pageId]); // Include pageId in the dependencies array
 
   return (
     <div className={styles.App}>
