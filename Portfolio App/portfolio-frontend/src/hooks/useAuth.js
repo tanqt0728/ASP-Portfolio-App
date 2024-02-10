@@ -10,7 +10,7 @@ const useAuth = () => {
     // Check if the token does not exist
     if (!token) {
       // Redirect to the login page
-      router.push("/login");
+      router.push("/auth/login");
     }
     // Optionally, validate the token's validity with your backend here
   }, [router]);
