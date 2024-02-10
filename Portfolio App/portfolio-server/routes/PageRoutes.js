@@ -11,16 +11,16 @@ const {
 
 const router = express.Router();
 
-router.post("/", create);
-router.post("/:pageId/content", changeContent);
+router.post("/editor", create);
+router.post("/editor/:pageId/content", changeContent);
 
-router.put("/:pageId", update);
+router.put("/editor/:pageId", update);
 
-router.delete("/:pageId", deletePageRecord);
+router.delete("/editor/:pageId", deletePageRecord);
 
-router.get("/:pageId", details);
-router.get("/", list);
-router.get("/:pageId/content", loadContent);
+router.get("/editor/:pageId", details);
+router.get("/editor", list);
+router.get("/editor/:pageId/content", loadContent);
 
 
 module.exports = router;

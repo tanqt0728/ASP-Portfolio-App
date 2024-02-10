@@ -1,35 +1,32 @@
 import React, { useState, useEffect } from "react";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 import grapesjs from "grapesjs";
-import gjsPresetWebpage from "grapesjs-preset-webpage"
-import styles from '../../components/editor.module.scss';
+import plugin from 'grapesjs-blocks-basic'
+
 
 function Editor() {
-  const [editor, setEditor] = useState(null);
-
   const router = useRouter();
   const { pageId } = router.query;
+  const [editor, setEditor] = useState(null);
 
   useEffect(() => {
-    const editorInstance = grapesjs.init({
+    const editor = grapesjs.init({
       container: "#editor",
-      plugins: [gjsPresetWebpage],
-      pluginsOpts:{
-        gjsPresetWebpage:{}
-      }
-      // Add more options as needed
+      plugins: [plugin],
+      pluginOpts: {
+        [plugin]: {},
+      },
     });
+    setEditor(editor);
 
-    setEditor(editorInstance);
-
-    // Cleanup function to destroy the editor on component unmount
     return () => {
-      editorInstance.destroy();
+      editor.destroy();
     };
-  }, [pageId]); // Include pageId in the dependencies array
+
+  }, [pageId]);
 
   return (
-    <div className={styles.App}>
+    <div>
       <style jsx global>{`
         body {
           margin: 0;
@@ -46,9 +43,12 @@ function Editor() {
         html::-webkit-scrollbar {
           display: none;
         }
+
       `}</style>
 
-      <div id="editor"></div>
+      <div className="App">
+        <div id="editor"></div>
+      </div>
     </div>
   );
 }
