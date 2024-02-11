@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import grapesjs from "grapesjs";
-import plugin from 'grapesjs-blocks-basic'
+import plugin from "grapesjs-blocks-basic";
 
-
-function Editor() {
+const Editor = () => {
+  const [editor, setEditor] = useState(null);
   const router = useRouter();
   const { pageId } = router.query;
-  const [editor, setEditor] = useState(null);
 
   useEffect(() => {
     const editor = grapesjs.init({
       container: "#editor",
+     
       plugins: [plugin],
       pluginOpts: {
         [plugin]: {},
@@ -22,7 +22,6 @@ function Editor() {
     return () => {
       editor.destroy();
     };
-
   }, [pageId]);
 
   return (
@@ -43,7 +42,6 @@ function Editor() {
         html::-webkit-scrollbar {
           display: none;
         }
-
       `}</style>
 
       <div className="App">
@@ -51,6 +49,6 @@ function Editor() {
       </div>
     </div>
   );
-}
+};
 
 export default Editor;

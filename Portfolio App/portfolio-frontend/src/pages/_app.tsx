@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "@/styles/globals.css";
+import 'slick-carousel/slick/slick.css';
+import "@/styles/globals.scss";
 import { AuthProvider } from "../contexts/AuthContext"; // Adjust the import path as needed
 import type { AppProps } from "next/app";
 import NavBar from "../components/NavBar";
