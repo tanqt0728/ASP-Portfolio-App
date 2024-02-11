@@ -10,11 +10,10 @@ const pageSchema = new mongoose.Schema(
     slug: {
       type: String,
       unique: true,
-      required: true,
     },
     content: {
       type: String,
-      default: '', // You can change this default value based on your requirements
+      default: '',
     },
   },
   {

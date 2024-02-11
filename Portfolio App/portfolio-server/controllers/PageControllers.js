@@ -1,4 +1,6 @@
 const Page = require('../models/Page');
+const slugify = require('slugify');
+
 
 // Create a new page
 exports.create = async (req, res) => {
@@ -10,7 +12,8 @@ exports.create = async (req, res) => {
       return res.status(400).json({ error: 'Name is required' });
     }
 
-    const page = new Page({ name });
+    const slug = slugify(name, { lower: true });  // Generate slug
+    const page = new Page({ name, slug });  // Include the slug in the page creation
     const savedPage = await page.save();
     res.status(201).json(savedPage);
   } catch (error) {
@@ -18,6 +21,7 @@ exports.create = async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
+
 
 // Update an existing page
 exports.update = async (req, res) => {

@@ -117,14 +117,16 @@ const Portfolio = () => {
               <tbody>
                 {Array.isArray(pages) && pages.length > 0 ? (
                   pages.map((page) => (
-                    <tr key={page._id}>
-                      <td>{page._id}</td>
-                      <td>{page.name}</td>
-                      <td>{page.slug}</td>
+                    <tr key={page?._id}>
+                      <td>{page?._id || "N/A"}</td>
+                      <td>{page?.name || "N/A"}</td>
+                      <td>{page?.slug || "N/A"}</td>
                       <td>
-                        <Link href={`/editor/${page._id}`}>
-                          <span className="edit-link">Edit</span>
-                        </Link>
+                        {page?._id && (
+                          <Link href={`/editor/${page._id}`}>
+                            <span className="edit-link">Edit</span>
+                          </Link>
+                        )}
                       </td>
                     </tr>
                   ))
