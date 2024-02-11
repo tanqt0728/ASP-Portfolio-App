@@ -12,3 +12,15 @@ export const create_page = async (name) => {
     return null;
   }
 };
+
+export const deletePageRecord = async (pageId) => {
+  try {
+    const response = await axios.delete(`${API_HOST}/${pageId}`);
+    console.log("API Response:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error deleting page:", error);
+    return null;
+  }
+};
+

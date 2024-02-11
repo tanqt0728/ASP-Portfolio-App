@@ -50,6 +50,8 @@ app.post("/api/portfolio", async (req, res) => {
   res.json(savedPortfolio);
 });
 
+
+
 // Add the catch-all route handler here
 app.use("*", (req, res) => {
   res.redirect("/");

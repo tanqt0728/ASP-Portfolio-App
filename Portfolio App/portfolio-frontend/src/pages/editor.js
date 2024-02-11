@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Input, Button } from "@nextui-org/react";
 import Link from "next/link";
-import { API_HOST, create_page } from "./api/api";
+import { API_HOST, create_page, deletePageRecord } from "./api/api";
 
 const Portfolio = () => {
   const [name, setName] = useState("");
@@ -11,6 +11,8 @@ const Portfolio = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [deletingPageId, setDeletingPageId] = useState(null); // Track the ID of the page being deleted
 
   const handleSubmit = async () => {
     try {
@@ -46,6 +48,29 @@ const Portfolio = () => {
     }
     getAllPages();
   }, [submitSuccess]);
+
+  const handleDeleteClick = async (pageId) => {
+    if (window.confirm("Are you sure you want to delete this page?")) {
+      try {
+        setIsDeleting(true);
+        setDeletingPageId(pageId);
+  
+        // Delete the page
+        await deletePageRecord(pageId);
+  
+        // Update the UI by removing the deleted page from the 'pages' state
+        setPages((prevPages) => prevPages.filter((page) => page._id !== pageId));
+  
+        console.log("Page deleted successfully");
+      } catch (error) {
+        console.error("Error deleting page:", error);
+      } finally {
+        setIsDeleting(false);
+        setDeletingPageId(null);
+      }
+    }
+  };
+  
 
   return (
     <div className="container">
@@ -111,7 +136,8 @@ const Portfolio = () => {
                   <th>ID</th>
                   <th>Name</th>
                   <th>Slug</th>
-                  <th>Action</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
                 </tr>
               </thead>
               <tbody>
@@ -128,11 +154,29 @@ const Portfolio = () => {
                           </Link>
                         )}
                       </td>
+                      <td>
+                        {page?._id && (
+                          <div>
+                            <span
+                              className="delete-link"
+                              style={{
+                                cursor: "pointer",
+                                color: "red",
+                              }}
+                              onClick={() => handleDeleteClick(page._id)}
+                            >
+                              {isDeleting && deletingPageId === page._id
+                                ? "Deleting..."
+                                : "Delete"}
+                            </span>
+                          </div>
+                        )}
+                      </td>
                     </tr>
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="4">Create a New Page</td>
+                    <td colSpan="5">Create a New Page</td>
                   </tr>
                 )}
               </tbody>
