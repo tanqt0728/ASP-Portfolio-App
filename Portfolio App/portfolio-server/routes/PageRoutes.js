@@ -7,20 +7,19 @@ const {
   details,
   list,
   loadContent,
-} = require("../controllers/PageControllers");
+} = require("../controllers/PageControllers.js");
 
 const router = express.Router();
 
-router.post("/editor", create);
-router.post("/editor/:pageId/content", changeContent);
+router.post("/", create);
+router.post("/:pageId/content", changeContent);
 
-router.put("/editor/:pageId", update);
+router.put("/:pageId", update);
 
-router.delete("/editor/:pageId", deletePageRecord);
+router.delete("/:pageId", deletePageRecord);
 
-router.get("/editor/:pageId", details);
-router.get("/editor", list);
-router.get("/editor/:pageId/content", loadContent);
-
+router.get("/:pageId", details);
+router.get("/", list);
+router.get("/:pageId/content", loadContent);
 
 module.exports = router;
