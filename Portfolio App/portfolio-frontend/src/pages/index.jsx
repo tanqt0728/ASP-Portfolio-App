@@ -1,4 +1,3 @@
-import { Inter } from "next/font/google";
 import useAuth from "../hooks/useAuth";
 import * as React from "react";
 import Head from 'next/head';
@@ -19,9 +18,6 @@ import TimelineSlider from '../components/Slider/TimelineSlider';
 import Spacing from '../components/Spacing';
 import VideoModal from '../components/VideoModal';
 
-
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   useAuth(); // Hook to check if the user is authenticated
@@ -73,8 +69,7 @@ export default function Home() {
           btnText="Get a Quote"
           btnLink="/contact"
           scrollDownId="#service"
-          socialLinksHeading="Follow Us"
-          heroSocialLinks={heroSocialLinks}
+        
           bgImageUrl="/images/hero_bg.jpeg"
         />
         {/* End Hero Section */}
