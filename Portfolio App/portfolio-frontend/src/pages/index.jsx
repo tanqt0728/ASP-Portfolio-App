@@ -16,7 +16,8 @@ import TestimonialSlider from '../components/Slider/TestimonialSlider';
 import TimelineSlider from '../components/Slider/TimelineSlider';
 import Spacing from '../components/Spacing';
 import VideoModal from '../components/VideoModal';
-
+import Button from "../components/Button";
+import PortfoliosExplore from "../components/PortfoliosExplore"
 
 export default function Home() {
   // Hero Social Links
@@ -148,17 +149,13 @@ export default function Home() {
 
         {/* Start Portfolio Section */}
         <Spacing lg="150" md="50" />
-        <Div>
-          <Div className="container">
-            <SectionHeading
-              title="Portfolio to explore"
-              subtitle="Latest Projects"
-              variant="cs-style1 text-center"
-            />
-            <Spacing lg="90" md="45" />
-          </Div>
-          <PortfolioSlider />
-        </Div>
+        <PortfoliosExplore 
+          title="Portfolio to explore"
+          subtitle="Latest Projects"
+          variant="cs-style1 text-center"
+          btnLink="/"
+          btnText="Search portfolios"
+        />
         {/* End Portfolio Section */}
 
 
