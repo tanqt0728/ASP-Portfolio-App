@@ -66,7 +66,6 @@ export default function Home() {
           btnText="Get a Quote"
           btnLink="/contact"
           scrollDownId="#service"
-        
           bgImageUrl="/images/hero_bg.jpg"
         />
         {/* End Hero Section */}
@@ -75,15 +74,17 @@ export default function Home() {
         <div className="container">
           <FunFact
             variant="cs-type1"
-            title="Our fun fact"
+            title="Create your portfolio here"
             subtitle="Sed ut perspiciatis unde omnis iste natus error voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis."
             data={funfaceData}
+            btnLink="/" /* add user portfolio view */
+            btnText="View my portfolio"
           />
         </div>
         {/* End FunFact Section */}
 
         {/* Start Service Section */}
-        <Spacing lg="150" md="80" />
+        {/* <Spacing lg="150" md="80" />
         <Div id="service">
           <Div className="container">
             <Div className="row">
@@ -142,7 +143,7 @@ export default function Home() {
               </Div>
             </Div>
           </Div>
-        </Div>
+        </Div> */}
         {/* End Service Section */}
 
         {/* Start Portfolio Section */}
@@ -160,8 +161,9 @@ export default function Home() {
         </Div>
         {/* End Portfolio Section */}
 
+
         {/* Start Awards Section */}
-        <Spacing lg="150" md="80" />
+        {/* <Spacing lg="150" md="80" />
         <Div className="cs-shape_wrap_2">
           <Div className="cs-shape_2">
             <Div />
@@ -181,11 +183,11 @@ export default function Home() {
               </Div>
             </Div>
           </Div>
-        </Div>
+        </Div> */}
         {/* End Awards Section */}
 
         {/* Start Video Block Section */}
-        <Spacing lg="130" md="70" />
+        {/* <Spacing lg="130" md="70" />
         <Div className="container">
           <h2 className="cs-font_50 cs-m0 text-center cs-line_height_4">
             Our agile process is ability to adapt and respond to change. Agile
@@ -196,11 +198,11 @@ export default function Home() {
             videoSrc="https://www.youtube.com/watch?v=VcaAVWtP48A"
             bgUrl="/images/video_bg.jpeg"
           />
-        </Div>
+        </Div> */}
         {/* End Video Block Section */}
 
         {/* Start Team Section */}
-        <Spacing lg="145" md="80" />
+        {/* <Spacing lg="145" md="80" />
         <Div className="container">
           <SectionHeading
             title="Awesome team <br/>members"
@@ -210,15 +212,15 @@ export default function Home() {
           <Spacing lg="85" md="45" />
           <TeamSlider />
         </Div>
-        <Spacing lg="150" md="80" />
+        <Spacing lg="150" md="80" /> */}
         {/* End Team Section */}
 
         {/* Start Testimonial Section */}
-        <TestimonialSlider />
+        {/* <TestimonialSlider /> */}
         {/* End Testimonial Section */}
 
         {/* Start Blog Section */}
-        <Spacing lg="150" md="80" />
+        {/* <Spacing lg="150" md="80" />
         <Div className="cs-shape_wrap_4">
           <Div className="cs-shape_4"></Div>
           <Div className="cs-shape_4"></Div>
@@ -240,31 +242,31 @@ export default function Home() {
               </Div>
             </Div>
           </Div>
-        </Div>
+        </Div> */}
         {/* End Blog Section */}
 
         {/* Start MovingText Section */}
-        <Spacing lg="125" md="70" />
+        {/* <Spacing lg="125" md="70" />
         <MovingText text="Our reputed world wide partners" />
-        <Spacing lg="105" md="70" />
+        <Spacing lg="105" md="70" /> */}
         {/* End MovingText Section */}
 
         {/* Start LogoList Section */}
-        <Div className="container">
+        {/* <Div className="container">
           <LogoList />
         </Div>
-        <Spacing lg="150" md="80" />
+        <Spacing lg="150" md="80" /> */}
         {/* End LogoList Section */}
 
         {/* Start CTA Section */}
-        <Div className="container">
+        {/* <Div className="container">
           <Cta
             title="Let’s disscuse make <br />something <i>cool</i> together"
             btnText="Apply For Meeting"
             btnLink="/contact"
             bgSrc="/images/cta_bg.jpeg"
           />
-        </Div>
+        </Div> */}
         {/* End CTA Section */}
       </Layout>
     </>

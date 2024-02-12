@@ -1,7 +1,8 @@
 import React from 'react';
 import Div from '../Div';
+import Button from '../Button';
 
-export default function FunFact({ variant, title, subtitle, data }) {
+export default function FunFact({ variant, title, subtitle, data, btnText, btnLink }) {
   return (
     <Div className={variant ? `cs-funfact_wrap ${variant}` : 'cs-funfact_wrap'}>
       <Div
@@ -14,7 +15,8 @@ export default function FunFact({ variant, title, subtitle, data }) {
           <p>{subtitle}</p>
         </Div>
       </Div>
-      <Div className="cs-funfact_right">
+      <Button btnLink={btnLink} btnText={btnText} />
+      {/* <Div className="cs-funfact_right">
         <Div className="cs-funfacts">
           {data.map((item, index) => (
             <Div className="cs-funfact cs-style1" key={index}>
@@ -29,7 +31,7 @@ export default function FunFact({ variant, title, subtitle, data }) {
             </Div>
           ))}
         </Div>
-      </Div>
+      </Div> */}
     </Div>
   );
 }
