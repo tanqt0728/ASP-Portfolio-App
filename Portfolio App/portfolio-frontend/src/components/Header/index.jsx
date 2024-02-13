@@ -41,11 +41,11 @@ export default function Header({ variant }) {
                     className="cs-nav_list"
                     style={{ display: `${mobileToggle ? 'block' : 'none'}` }}
                   >
-                    <li className="menu-item-has-children">
+                    <li>
                       <Link href="/" onClick={() => setMobileToggle(false)}>
                         Home
                       </Link>
-                      <DropDown>
+                      {/* <DropDown>
                         <ul>
                           <li>
                             <Link
@@ -104,14 +104,14 @@ export default function Header({ variant }) {
                             </Link>
                           </li>
                         </ul>
-                      </DropDown>
+                      </DropDown> */}
                     </li>
                     <li>
-                      <Link href="about" onClick={() => setMobileToggle(false)}>
-                        About
+                      <Link href="/" onClick={() => setMobileToggle(false)}>
+                        Search
                       </Link>
                     </li>
-                    <li className="menu-item-has-children">
+                    {/* <li className="menu-item-has-children">
                       <Link
                         href="/service"
                         onClick={() => setMobileToggle(false)}
@@ -138,15 +138,15 @@ export default function Header({ variant }) {
                           </li>
                         </ul>
                       </DropDown>
-                    </li>
-                    <li className="menu-item-has-children">
+                    </li> */}
+                    <li>
                       <Link
-                        href="/portfolio"
+                        href="/editor"
                         onClick={() => setMobileToggle(false)}
                       >
                         Portfolio
                       </Link>
-                      <DropDown>
+                      {/* <DropDown>
                         <ul>
                           <li>
                             <Link
@@ -165,9 +165,9 @@ export default function Header({ variant }) {
                             </Link>
                           </li>
                         </ul>
-                      </DropDown>
+                      </DropDown> */}
                     </li>
-                    <li className="menu-item-has-children">
+                    {/* <li className="menu-item-has-children">
                       <Link href="/blog" onClick={() => setMobileToggle(false)}>
                         Blog
                       </Link>
@@ -191,8 +191,8 @@ export default function Header({ variant }) {
                           </li>
                         </ul>
                       </DropDown>
-                    </li>
-                    <li className="menu-item-has-children">
+                    </li> */}
+                    {/* <li className="menu-item-has-children">
                       <Link href="/" onClick={() => setMobileToggle(false)}>
                         Pages
                       </Link>
@@ -240,6 +240,11 @@ export default function Header({ variant }) {
                           </li>
                         </ul>
                       </DropDown>
+                    </li> */}
+                    <li>
+                      <Link href="/auth/login" onClick={() => setMobileToggle(false)}>
+                        Sign Up | Login
+                      </Link>
                     </li>
                   </ul>
                   <span
@@ -254,7 +259,7 @@ export default function Header({ variant }) {
                   </span>
                 </Div>
               </Div>
-              <Div className="cs-main_header_right">
+              {/* <Div className="cs-main_header_right">
                 <Div className="cs-toolbox">
                   <span
                     className="cs-icon_btn"
@@ -268,13 +273,13 @@ export default function Header({ variant }) {
                     </span>
                   </span>
                 </Div>
-              </Div>
+              </Div> */}
             </Div>
           </Div>
         </Div>
       </header>
 
-      <Div
+      {/* <Div
         className={
           sideHeaderToggle ? 'cs-side_header active' : 'cs-side_header'
         }
@@ -311,7 +316,7 @@ export default function Header({ variant }) {
             <SocialWidget />
           </Div>
         </Div>
-      </Div>
+      </Div> */}
     </>
   );
 }

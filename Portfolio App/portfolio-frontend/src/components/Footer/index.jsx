@@ -5,6 +5,7 @@ import MenuWidget from '../Widget/MenuWidget';
 import Newsletter from '../Widget/Newsletter';
 import SocialWidget from '../Widget/SocialWidget';
 import TextWidget from '../Widget/TextWidget';
+import Spacing from "../Spacing"
 
 export default function Footer({ copyrightText, logoSrc, logoAlt, text }) {
   const copyrightLinks = [
@@ -39,7 +40,9 @@ export default function Footer({ copyrightText, logoSrc, logoAlt, text }) {
 
   return (
     <footer className="cs-fooer">
-      <Div className="cs-fooer_main">
+      <Spacing lg="50" md="50"/>
+
+      {/* <Div className="cs-fooer_main">
         <Div className="container">
           <Div className="row">
             <Div className="col-lg-3 col-sm-6">
@@ -73,8 +76,8 @@ export default function Footer({ copyrightText, logoSrc, logoAlt, text }) {
             </Div>
           </Div>
         </Div>
-      </Div>
-      <Div className="container">
+      </Div> */}
+      {/* <Div className="container">
         <Div className="cs-bottom_footer">
           <Div className="cs-bottom_footer_left">
             <Div className="cs-copyright">Copyright © 2022 Laralink.</Div>
@@ -83,7 +86,7 @@ export default function Footer({ copyrightText, logoSrc, logoAlt, text }) {
             <MenuWidget menuItems={copyrightLinks} variant=" cs-style2" />
           </Div>
         </Div>
-      </Div>
+      </Div> */}
     </footer>
   );
 }
