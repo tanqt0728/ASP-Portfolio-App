@@ -141,7 +141,7 @@ export default function Header({ variant }) {
                     </li> */}
                     <li>
                       <Link
-                        href="/editor"
+                        href="/"
                         onClick={() => setMobileToggle(false)}
                       >
                         Portfolio
@@ -242,7 +242,7 @@ export default function Header({ variant }) {
                       </DropDown>
                     </li> */}
                     <li>
-                      <Link href="/auth/login" onClick={() => setMobileToggle(false)}>
+                      <Link href="/" onClick={() => setMobileToggle(false)}>
                         Sign Up | Login
                       </Link>
                     </li>

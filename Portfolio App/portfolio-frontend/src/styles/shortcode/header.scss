@@ -326,11 +326,12 @@
   .cs-site_header.cs-style1 {
     .cs-main_header_center {
       display: flex;
-      justify-content: center;
+      // justify-content: center;
       align-items: center;
       height: 100%;
       width: 100%;
-      max-width: calc(100% - 300px);
+      // max-width: calc(100%);
+      margin-left: 150px;
     }
     .cs-main_header_left {
       height: 100%;
@@ -359,7 +360,7 @@
 
         &:last-child {
           margin-right: 0;
-          margin-left: 370px;
+          margin-left: 300px;
         }
 
         > a {
