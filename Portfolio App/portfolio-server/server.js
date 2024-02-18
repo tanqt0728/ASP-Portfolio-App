@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const userRoutes = require("./routes/UserRoutes");
+const pageRoutes = require("./routes/PageRoutes");
 require("dotenv").config();
 
 const corsOptions = {
@@ -15,6 +16,7 @@ app.use(cors(corsOptions));
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use("/api/auth", userRoutes);
+app.use("/api/editor", pageRoutes);
 
 const uri = `mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASS}@${process.env.DATABASE_URL}/?retryWrites=true&w=majority`;
 
@@ -47,10 +49,14 @@ app.post("/api/portfolio", async (req, res) => {
   const savedPortfolio = await newPortfolio.save();
   res.json(savedPortfolio);
 });
+
+
+
 // Add the catch-all route handler here
 app.use("*", (req, res) => {
   res.redirect("/");
 });
+
 
 app.listen(PORT, () => {
   console.log(`Server started on http://localhost:${PORT}`);
