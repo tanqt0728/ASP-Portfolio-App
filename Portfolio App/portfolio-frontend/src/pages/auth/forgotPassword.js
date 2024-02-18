@@ -1,17 +1,19 @@
-import { useState } from 'react';
-import { useAuth } from '../../contexts/AuthContext';
+import { useState } from "react";
+import { useAuth } from "../../contexts/AuthContext";
 
 export default function ForgotPassword() {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const { forgotPassword } = useAuth();
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await forgotPassword(email);
-      alert('If an account with that email exists, we have sent you an email to reset your password.');
+      alert(
+        "If an account with that email exists, we have sent you an email to reset your password."
+      );
     } catch (error) {
-      alert('Failed to send reset password email');
+      alert("Failed to send reset password email");
     }
   };
 

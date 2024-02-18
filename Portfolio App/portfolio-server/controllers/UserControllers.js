@@ -5,23 +5,46 @@ const { sendEmail } = require("../utils/NodeMailer");
 const crypto = require("crypto"); // Ensure this is defined if using crypto for tokens
 
 exports.signup = async (req, res) => {
-  const { email, hashedPassword: hashedPassword } = req.body;
+  // Destructure new fields from the request body
+  const {
+    email,
+    password,
+    fullName,
+    dob,
+    contactNumber, // Assuming this is sent as an object {number, countryCode}
+    location, // Assuming this is sent as an object {city, state, country}
+  } = req.body;
+
   try {
+    // Check if user already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).send("User already exists.");
     }
 
-    // Directly store the client-hashed password, ideally with additional server-side security measures
-    const result = await User.create({ email, password: hashedPassword });
+    // Hash password server-side for security
+    const hashedPassword = await bcrypt.hash(password, 12);
 
+    // Create user with the new model structure
+    const result = await User.create({
+      email,
+      password: hashedPassword,
+      fullName,
+      dob,
+      contactNumber,
+      location,
+    });
+
+    // Create token
     const token = jwt.sign(
       { email: result.email, id: result._id },
       process.env.JWT_SECRET,
       { expiresIn: "1h" }
     );
 
-    res.status(201).json({ result, token });
+    // Respond with the created user (without password) and token
+    const { password: _, ...userData } = result.toObject(); // Remove password from the result before sending it back
+    res.status(201).json({ result: userData, token });
   } catch (error) {
     res.status(500).json({ message: "Something went wrong." });
   }
