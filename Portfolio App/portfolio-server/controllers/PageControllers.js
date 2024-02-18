@@ -1,6 +1,5 @@
-const Page = require('../models/Page');
-const slugify = require('slugify');
-
+const Page = require("../models/Page");
+const slugify = require("slugify");
 
 // Create a new page
 exports.create = async (req, res) => {
@@ -9,33 +8,37 @@ exports.create = async (req, res) => {
 
     // Validate input
     if (!name) {
-      return res.status(400).json({ error: 'Name is required' });
+      return res.status(400).json({ error: "Name is required" });
     }
 
-    const slug = slugify(name, { lower: true });  // Generate slug
-    const page = new Page({ name, slug });  // Include the slug in the page creation
+    const slug = slugify(name, { lower: true }); // Generate slug
+    const page = new Page({ name, slug }); // Include the slug in the page creation
     const savedPage = await page.save();
+
     res.status(201).json(savedPage);
   } catch (error) {
-    console.error('Error creating page:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error("Error creating page:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
-
 
 // Update an existing page
 exports.update = async (req, res) => {
   try {
     const { pageId } = req.params;
     const { name } = req.body;
-    const updatedPage = await Page.findByIdAndUpdate(pageId, { name }, { new: true });
+    const updatedPage = await Page.findByIdAndUpdate(
+      pageId,
+      { name },
+      { new: true }
+    );
     if (!updatedPage) {
-      return res.status(404).json({ error: 'Page not found' });
+      return res.status(404).json({ error: "Page not found" });
     }
     res.json(updatedPage);
   } catch (error) {
-    console.error('Error updating page:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error("Error updating page:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
@@ -45,12 +48,12 @@ exports.deletePageRecord = async (req, res) => {
     const { pageId } = req.params;
     const deletedPage = await Page.findByIdAndDelete(pageId);
     if (!deletedPage) {
-      return res.status(404).json({ error: 'Page not found' });
+      return res.status(404).json({ error: "Page not found" });
     }
     res.json(deletedPage);
   } catch (error) {
-    console.error('Error deleting page:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error("Error deleting page:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
@@ -60,12 +63,12 @@ exports.details = async (req, res) => {
     const { pageId } = req.params;
     const page = await Page.findById(pageId);
     if (!page) {
-      return res.status(404).json({ error: 'Page not found' });
+      return res.status(404).json({ error: "Page not found" });
     }
     res.json(page);
   } catch (error) {
-    console.error('Error getting page details:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error("Error getting page details:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
@@ -73,10 +76,11 @@ exports.details = async (req, res) => {
 exports.list = async (req, res) => {
   try {
     const pages = await Page.find();
+
     res.json(pages);
   } catch (error) {
-    console.error('Error getting list of pages:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error("Error getting list of pages:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
@@ -85,14 +89,18 @@ exports.changeContent = async (req, res) => {
   try {
     const { pageId } = req.params;
     const { content } = req.body;
-    const updatedPage = await Page.findByIdAndUpdate(pageId, { content }, { new: true });
+    const updatedPage = await Page.findByIdAndUpdate(
+      pageId,
+      { content },
+      { new: true }
+    );
     if (!updatedPage) {
-      return res.status(404).json({ error: 'Page not found' });
+      return res.status(404).json({ error: "Page not found" });
     }
     res.json(updatedPage);
   } catch (error) {
-    console.error('Error changing page content:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error("Error changing page content:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
@@ -102,11 +110,11 @@ exports.loadContent = async (req, res) => {
     const { pageId } = req.params;
     const page = await Page.findById(pageId);
     if (!page) {
-      return res.status(404).json({ error: 'Page not found' });
+      return res.status(404).json({ error: "Page not found" });
     }
     res.json({ content: page.content });
   } catch (error) {
-    console.error('Error loading page content:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error("Error loading page content:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };

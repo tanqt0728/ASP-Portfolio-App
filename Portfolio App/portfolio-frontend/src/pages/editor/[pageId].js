@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import grapesjs from "grapesjs";
 import plugin from "grapesjs-blocks-basic";
+import { update_page, loadPageFromBackend } from "../api/api";
 
 const Editor = () => {
   const [editor, setEditor] = useState(null);
@@ -11,7 +12,7 @@ const Editor = () => {
   useEffect(() => {
     const editor = grapesjs.init({
       container: "#editor",
-     
+
       plugins: [plugin],
       pluginOpts: {
         [plugin]: {},
@@ -19,10 +20,24 @@ const Editor = () => {
     });
     setEditor(editor);
 
+    if (pageId) {
+      loadPageFromBackend();
+    }
+
     return () => {
       editor.destroy();
     };
   }, [pageId]);
+
+  const savePageToBackend = async () => {
+    const pageContent = editor.getComponents();
+    try {
+      await update_page(pageId, pageContent);
+      console.log("Page saved successfully");
+    } catch (error) {
+      console.error("Error saving page to backend:", error);
+    }
+  };
 
   return (
     <div>
@@ -46,6 +61,7 @@ const Editor = () => {
 
       <div className="App">
         <div id="editor"></div>
+        <button onClick={savePageToBackend}>Save Page</button>
       </div>
     </div>
   );

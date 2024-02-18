@@ -24,7 +24,6 @@ const uri = `mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_P
 
 // Connect to MongoDB
 mongoose
-
   .connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,

@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Input, Button } from "@nextui-org/react";
 import Link from "next/link";
-import { API_HOST, create_page, deletePageRecord } from "./api/api";
+import { getAllPages, create_page, deletePageRecord } from "./api/api";
 
 const Portfolio = () => {
   const [name, setName] = useState("");
@@ -34,19 +34,19 @@ const Portfolio = () => {
   };
 
   useEffect(() => {
-    async function getAllPages() {
+    const fetchData = async () => {
       try {
-        const response = await axios.get(`${API_HOST}/`);
-        console.log("API Response:", response.data);
-        setPages(response.data);
+        const fetchedPages = await getAllPages();
+        setPages(fetchedPages);
       } catch (error) {
         console.error("Error fetching pages:", error);
         setError("Error fetching pages. Please try again later.");
       } finally {
         setLoading(false);
       }
-    }
-    getAllPages();
+    };
+
+    fetchData();
   }, [submitSuccess]);
 
   const handleDeleteClick = async (pageId) => {
@@ -54,13 +54,15 @@ const Portfolio = () => {
       try {
         setIsDeleting(true);
         setDeletingPageId(pageId);
-  
+
         // Delete the page
         await deletePageRecord(pageId);
-  
+
         // Update the UI by removing the deleted page from the 'pages' state
-        setPages((prevPages) => prevPages.filter((page) => page._id !== pageId));
-  
+        setPages((prevPages) =>
+          prevPages.filter((page) => page._id !== pageId)
+        );
+
         console.log("Page deleted successfully");
       } catch (error) {
         console.error("Error deleting page:", error);
@@ -70,7 +72,6 @@ const Portfolio = () => {
       }
     }
   };
-  
 
   return (
     <div className="container">
