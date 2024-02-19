@@ -3,7 +3,9 @@ import Head from 'next/head';
 import Layout from '../components/Layout';
 import Hero from '../components/Hero';
 import UserHeading from "../components/PageHeading/UserHeading"
-import Div from "../components/Div"
+import Div from "../components/Div";
+import UserDetails from "../components/User"
+import Spacing from '../components/Spacing';
 
 const UserPage = () => {
   const userData = {
@@ -53,15 +55,15 @@ const UserPage = () => {
           pageLinkText="Portfolio" 
           userImage={userData.userProfilePicture}
           />
-        <Div>
-          <h2>{userData.username}</h2>
-          <p>{userData.userDescription}</p>
+        <Spacing lg="30" md="20"/>
+        <Div className="container">
+          <UserDetails 
+            username={userData.username}
+            userStatement={userData.userDescription}
+            profileImg={userData.userProfilePicture}
+          />
         </Div>
-        <Div
-        style={{ backgroundImage: `url(${userData.userProfilePicture})`, width: "424px", height: "465px"}}
-        >
 
-        </Div>
       </Layout>
     </>
   )

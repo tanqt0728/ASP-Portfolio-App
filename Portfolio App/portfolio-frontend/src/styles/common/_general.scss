@@ -1065,7 +1065,7 @@ label {
 }
 
 .cs-page_heading.cs-style1 {
-  height: 650px;
+  height: 250px;
   padding: 120px 0 50px;
   position: relative;
   &::after {
@@ -1481,13 +1481,13 @@ label {
     width: 200px;
   }
   .cs-page_heading.cs-style1 {
-    height: 550px;
+    height: 250px;
   }
 }
 
 @media screen and (max-width: 1199px) {
   .cs-page_heading.cs-style1 {
-    height: 450px;
+    height: 250px;
   }
   .cs-half_screen {
     width: 100%;
@@ -1537,7 +1537,7 @@ label {
   }
   .cs-page_heading.cs-style1 {
     padding: 100px 0 50px;
-    height: 400px;
+    height: 250px;
     .cs-page_title {
       margin-bottom: 15px;
     }
