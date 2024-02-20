@@ -39,10 +39,14 @@ export const deletePageRecord = async (pageId) => {
 
 export const update_page = async (pageId, content) => {
   try {
-    console.log("getting contents from mongo");
-    const response = await axios.put(`${API_HOST}/api/editor/${pageId}`, {
-      content,
-    });
+    const serializedContent = JSON.stringify(content);
+    const response = await axios.post(
+      `${API_HOST}/api/editor/${pageId}/content`,
+      {
+        serializedContent,
+      }
+    );
+    console.log(content);
     console.log("API Response:", response.data);
     return response.data;
   } catch (error) {
@@ -51,11 +55,13 @@ export const update_page = async (pageId, content) => {
   }
 };
 
-export const loadPageFromBackend = async () => {
+export const loadPageFromBackend = async (pageId, editor) => {
   try {
     const response = await axios.get(`${API_HOST}/api/editor/${pageId}`);
     const pageContent = response.data.content;
-    editor.setComponents(pageContent);
+    const deserializedContent = JSON.parse(pageContent);
+    console.log(deserializedContent);
+    editor.loadProjectData(deserializedContent);
   } catch (error) {
     console.error("Error loading page from backend:", error);
   }

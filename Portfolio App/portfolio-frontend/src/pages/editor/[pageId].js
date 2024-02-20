@@ -21,7 +21,7 @@ const Editor = () => {
     setEditor(editor);
 
     if (pageId) {
-      loadPageFromBackend();
+      loadPageFromBackend(pageId, editor);
     }
 
     return () => {
@@ -30,7 +30,7 @@ const Editor = () => {
   }, [pageId]);
 
   const savePageToBackend = async () => {
-    const pageContent = editor.getComponents();
+    const pageContent = editor.getProjectData();
     try {
       await update_page(pageId, pageContent);
       console.log("Page saved successfully");

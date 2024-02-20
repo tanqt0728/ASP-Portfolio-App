@@ -88,10 +88,10 @@ exports.list = async (req, res) => {
 exports.changeContent = async (req, res) => {
   try {
     const { pageId } = req.params;
-    const { content } = req.body;
+    const updatedContent = req.body.serializedContent;
     const updatedPage = await Page.findByIdAndUpdate(
       pageId,
-      { content },
+      { content: updatedContent },
       { new: true }
     );
     if (!updatedPage) {
