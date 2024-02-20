@@ -5,15 +5,8 @@ const userSchema = mongoose.Schema({
   password: { type: String, required: true },
   fullName: { type: String, required: true },
   dob: { type: Date, required: true },
-  contactNumber: {
-    number: { type: String, required: true },
-    countryCode: { type: String, required: true },
-  },
-  location: {
-    city: { type: String, required: false },
-    state: { type: String, required: false },
-    country: { type: String, required: true },
-  },
+  contactNumber: {type: String, required: true },
+  location: { type: String, required: true },
   resetToken: String,
   resetTokenExpiration: Date,
 });

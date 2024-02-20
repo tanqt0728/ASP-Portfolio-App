@@ -1,132 +1,126 @@
 const User = require("../models/User");
+const Page = require('../models/Page');
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const crypto = require("crypto");
 const { sendEmail } = require("../utils/NodeMailer");
-const crypto = require("crypto"); // Ensure this is defined if using crypto for tokens
+require("dotenv").config();
 
+// Signup User
 exports.signup = async (req, res) => {
-  // Destructure new fields from the request body
-  const {
-    email,
-    password,
-    fullName,
-    dob,
-    contactNumber, // Assuming this is sent as an object {number, countryCode}
-    location, // Assuming this is sent as an object {city, state, country}
-  } = req.body;
+  const { email, hashedPassword, fullName, dob, contactNumber, location } = req.body;
 
   try {
-    // Check if user already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res.status(400).send("User already exists.");
+      return res.status(400).json({ error: "User already exists." });
     }
 
-    // Hash password server-side for security
-    const hashedPassword = await bcrypt.hash(password, 12);
+    const hashedPasswordNew = await bcrypt.hash(hashedPassword, 12);
 
-    // Create user with the new model structure
-    const result = await User.create({
+    const user = new User({
       email,
-      password: hashedPassword,
+      password: hashedPasswordNew,
       fullName,
       dob,
       contactNumber,
       location,
     });
 
-    // Create token
-    const token = jwt.sign(
-      { email: result.email, id: result._id },
-      process.env.JWT_SECRET,
-      { expiresIn: "1h" }
-    );
+    const savedUser = await user.save();
 
-    // Respond with the created user (without password) and token
-    const { password: _, ...userData } = result.toObject(); // Remove password from the result before sending it back
-    res.status(201).json({ result: userData, token });
+    const userPage = new Page({
+      name: `${fullName}'s Portfolio`, 
+      content: '', 
+      owner: savedUser._id,
+      visibility: 'unpublished', 
+    });
+
+    await userPage.save(); 
+    const token = jwt.sign({ userId: savedUser._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
+
+    res.status(201).json({ user: savedUser, token });
   } catch (error) {
-    res.status(500).json({ message: "Something went wrong." });
+    res.status(500).json({ error: "Something went wrong." });
   }
 };
 
+// Login User
 exports.login = async (req, res) => {
-  const { email, password: clientHashedPassword } = req.body;
+  const { email, password } = req.body;
+
   try {
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(404).send("User not found.");
+      return res.status(404).json({ error: "User not found." });
     }
 
-    if (clientHashedPassword != user.password) {
-      return res.status(400).send("Invalid credentials.");
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ error: "Invalid credentials." });
     }
 
-    const token = jwt.sign(
-      { email: user.email, id: user._id },
-      process.env.JWT_SECRET,
-      { expiresIn: "1h" }
-    );
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
 
-    res.status(200).json({ result: user, token });
+    res.status(200).json({ user, token });
   } catch (error) {
-    res.status(500).json({ message: "Something went wrong." });
+    res.status(500).json({ error: "Something went wrong." });
   }
 };
+
+// Forgot Password
 exports.forgotPassword = async (req, res) => {
   const { email } = req.body;
+
   try {
     const user = await User.findOne({ email });
-    if (!user) return res.status(404).send("User not found.");
+    if (!user) {
+      return res.status(404).json({ error: "User not found." });
+    }
 
-    const resetToken = crypto.randomBytes(32).toString("hex");
-    user.resetToken = crypto
-      .createHash("sha256")
-      .update(resetToken)
-      .digest("hex");
-    user.resetTokenExpiration = Date.now() + 3600000; // 1 hour from now
+    const resetToken = crypto.randomBytes(20).toString('hex');
+    const hashedToken = crypto.createHash('sha256').update(resetToken).digest('hex');
 
+    user.resetToken = hashedToken;
+    user.resetTokenExpiration = Date.now() + 3600000; // 1 hour
     await user.save();
 
-    const resetURL = `${req.protocol}://${req.get(
-      "host"
-    )}/api/users/reset-password/${resetToken}`;
-    const message = `Forgot your password? Submit a PATCH request with your new password to: ${resetURL}.\nIf you didn't forget your password, please ignore this email!`;
+    const resetURL = `${req.protocol}://${req.get("host")}/api/users/reset-password/${resetToken}`;
+    const message = `You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\nPlease click on the following link, or paste this into your browser to complete the process:\n\n${resetURL}\n\nIf you did not request this, please ignore this email and your password will remain unchanged.`;
 
-    await sendEmail(email, "Password Reset Link", message);
+    await sendEmail(email, "Your Password Reset Token", message);
 
-    res.status(200).send("Password reset link sent to your email.");
+    res.status(200).json({ message: "Token sent to email!" });
   } catch (error) {
     user.resetToken = undefined;
     user.resetTokenExpiration = undefined;
     await user.save();
-    res.status(500).json({
-      message: "There was an error sending the email. Try again later.",
-    });
+    res.status(500).json({ error: "Email could not be sent." });
   }
 };
 
+// Reset Password
 exports.resetPassword = async (req, res) => {
-  const { token, password } = req.body;
-  try {
-    const hashedToken = crypto.createHash("sha256").update(token).digest("hex");
+  const { token, newPassword } = req.body;
+  const hashedToken = crypto.createHash('sha256').update(token).digest('hex');
 
+  try {
     const user = await User.findOne({
       resetToken: hashedToken,
-      resetTokenExpiration: { $gt: Date.now() }, // Checks if the token is not expired
+      resetTokenExpiration: { $gt: Date.now() },
     });
 
     if (!user) {
-      return res.status(400).send("Token is invalid or has expired.");
+      return res.status(400).json({ error: "Token is invalid or has expired." });
     }
 
-    user.password = await bcrypt.hash(password, 12); // Hash the new password
-    user.resetToken = undefined; // Clear the reset token
-    user.resetTokenExpiration = undefined; // Clear the token expiration
+    user.password = await bcrypt.hash(newPassword, 12);
+    user.resetToken = undefined;
+    user.resetTokenExpiration = undefined;
     await user.save();
 
-    res.status(200).send("Password has been reset successfully.");
+    res.status(200).json({ message: "Password has been reset." });
   } catch (error) {
-    res.status(500).json({ message: "Something went wrong." });
+    res.status(500).json({ error: "Something went wrong." });
   }
 };

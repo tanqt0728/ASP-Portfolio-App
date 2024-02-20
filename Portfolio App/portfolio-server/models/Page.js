@@ -11,9 +11,31 @@ const pageSchema = new mongoose.Schema(
       type: String,
       unique: true,
     },
-    content: {
+    html: { 
       type: String,
       default: '',
+    },
+    css: {  
+      type: String,
+      default: '',
+    },
+    components: { 
+      type: String,
+      default: '',
+    },
+    styles: { 
+      type: String,
+      default: '',
+    },
+    owner: { 
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
+    visibility: { 
+      type: String,
+      enum: ['published', 'unpublished'],
+      default: 'unpublished',
     },
   },
   {
@@ -21,11 +43,7 @@ const pageSchema = new mongoose.Schema(
   }
 );
 
-// Middleware to generate slug before saving
-pageSchema.pre('save', function (next) {
-  this.slug = slugify(this.name, { lower: true });
-  next();
-});
+
 
 const Page = mongoose.model('Page', pageSchema);
 

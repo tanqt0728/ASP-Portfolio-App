@@ -30,6 +30,7 @@
     "react-modal-image": "^2.6.0",
     "react-ripples": "^2.2.1",
     "react-slick": "^0.29.0",
+    "react-toastify": "^10.0.4",
     "react-water-wave": "^2.0.1",
     "sass": "^1.71.0",
     "slick-carousel": "^1.8.1",

@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Input, Button } from "@nextui-org/react";
 import Link from "next/link";
-import { API_HOST, create_page, deletePageRecord } from "./api/api";
+import { API_HOST, create_page, deletePageRecord ,listPages} from "./api/api";
 
 const Portfolio = () => {
   const [name, setName] = useState("");
@@ -36,9 +36,8 @@ const Portfolio = () => {
   useEffect(() => {
     async function getAllPages() {
       try {
-        const response = await axios.get(`${API_HOST}/`);
-        console.log("API Response:", response.data);
-        setPages(response.data);
+        const data = await listPages();
+        setPages(data);
       } catch (error) {
         console.error("Error fetching pages:", error);
         setError("Error fetching pages. Please try again later.");
@@ -46,6 +45,8 @@ const Portfolio = () => {
         setLoading(false);
       }
     }
+    
+
     getAllPages();
   }, [submitSuccess]);
 
