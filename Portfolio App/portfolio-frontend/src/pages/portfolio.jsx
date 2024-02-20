@@ -23,7 +23,7 @@ const UserPage = () => {
   }
   const userEductation = {
     institution: "Some university",
-    degree: "Bachelors",
+    degree: "Bachelors of Science (BSc.)",
     fieldOfStudy: "Random Field",
     startDate: "About 3 years ago",
     endDate: "Last year",
@@ -41,14 +41,6 @@ const UserPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        {/* <Hero
-          title="Creativity In <br/>Our Blood Line"
-          subtitle="We deliver best problem solving solution for our client and provide finest finishing product in present and upcoming future."
-          btnText="Get a Quote"
-          btnLink="/contact"
-          scrollDownId="#service"
-          bgImageUrl="/images/hero_bg.jpg"
-        /> */}
         <UserHeading 
           title="My portfolio" 
           bgSrc={userData.userBanner} 
@@ -63,7 +55,28 @@ const UserPage = () => {
             profileImg={userData.userProfilePicture}
           />
         </Div>
-
+        <Spacing lg="30" md="20"/>
+        <Div className="container cs-portfolio_items">
+          <Div className="cs-portfolio_item_container cs-radius_7">
+            <h3>Experience</h3>
+            <p>Title: {userExperience.title}</p>
+            <p>Company: {userExperience.company}</p>
+            <p>Time period: {userExperience.startDate} - {userExperience.endDate}</p>
+            <p>Description: {userExperience.description}</p>
+          </Div>
+          <Div className="cs-portfolio_item_container cs-radius_7">
+            <h3>Education</h3>
+            <p>Institution: {userEductation.institution}</p>
+            <p>{userEductation.degree} {userEductation.fieldOfStudy}</p>
+            <p>Time period: {userEductation.startDate} - {userEductation.endDate}</p>
+          </Div>
+          <Div className="cs-portfolio_item_container cs-radius_7">
+            <h3>Reference</h3>
+            <p>{userReference.name}</p>
+            <p>Contact details: {userReference.contactInfo}</p>
+            <p>Relationship: {userReference.relationship}</p>
+          </Div>
+        </Div>
       </Layout>
     </>
   )

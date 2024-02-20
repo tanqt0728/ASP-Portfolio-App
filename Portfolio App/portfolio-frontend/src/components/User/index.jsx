@@ -8,7 +8,7 @@ export default function UserDetails({ username, userStatement, profileImg }) {
           className="cs-bg cs-user_profile_img cs-radius_15"
           style={{ backgroundImage: `url(${profileImg})`}}
         />
-        <Div className="cs-user_detail_text">
+        <Div>
           <h2>@{username}</h2>
           <p>{userStatement}</p>
         </Div>
