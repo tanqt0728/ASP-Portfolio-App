@@ -148,7 +148,7 @@ export default function Home() {
         {/* End Service Section */}
 
         {/* Start Portfolio Section */}
-        <Spacing lg="150" md="50" />
+        <Spacing lg="60" md="60" />
         <PortfoliosExplore 
           title="Portfolio to explore"
           subtitle="Latest Projects"

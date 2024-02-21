@@ -1,5 +1,7 @@
 .cs-funfact_wrap {
+  // width: 100%;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   background: linear-gradient(267.18deg, #161616 0%, #080808 100%);
   border-radius: 15px;
@@ -18,7 +20,7 @@
   }
   .cs-funfact_left {
     flex: none;
-    width: 40%;
+    width: 70%;
     position: relative;
     z-index: 2;
   }
@@ -136,7 +138,7 @@
   }
   .cs-funfact_wrap {
     .cs-funfact_left {
-      width: 38%;
+      width: 70%;
     }
     .cs-funfact_right {
       padding-left: 50px;
