@@ -1,11 +1,14 @@
+.cs-user_banner_overlap {
+		position: relative;
+		z-index: 1;
+		margin-top: -130px;
+}
+
 .cs-user_detail_container {
 	display: flex;
 	align-items: center;
 	padding: 15px;
 	background: linear-gradient(267.18deg, #161616 0%, #080808 100%);
-	position: relative;
-	z-index: 1;
-	margin-top: -130px ;
 }
 
 .cs-user_profile_img {

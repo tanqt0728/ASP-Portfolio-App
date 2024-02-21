@@ -11,7 +11,7 @@ const UserPage = () => {
   const userData = {
     username: "somePerson",
     userDescription: "Some personal statement",
-    userBanner: "/images/search_banner.png",
+    userBanner: "/images/user_banner.png",
     userProfilePicture: "/images/portfolio_6.jpeg"
   }
   const userExperience = {
@@ -50,6 +50,7 @@ const UserPage = () => {
             username={userData.username}
             userStatement={userData.userDescription}
             profileImg={userData.userProfilePicture}
+            viewing={true}
           />
         </Div>
         <Spacing lg="30" md="20"/>

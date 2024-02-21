@@ -9,31 +9,18 @@ import SearchInput from '../../components/SearchInput';
 
 
 export default function Search() {
-    const userData = {
-    username: "somePerson",
-    userDescription: "Some personal statement",
-    userBanner: "/images/blog_details_hero_bg.jpeg",
-    userProfilePicture: "/images/portfolio_6.jpeg"
-  }
-  const userExperience = {
-    title: "Job Position",
-    company: "Company Name",
-    startDate: "About a year ago",
-    endDate: "Still ongoing",
-    description: "I do things"
-  }
-  const userEductation = {
-    institution: "Some university",
-    degree: "Bachelors of Science (BSc.)",
-    fieldOfStudy: "Random Field",
-    startDate: "About 3 years ago",
-    endDate: "Last year",
-  }
-  const userReference = {
-    name: "Mr. Person",
-    contactInfo: "Should probably be private",
-    relationship: "Not my dad",
-  }
+    const userData = [
+    { 
+      username: "somePerson",
+      userDescription: "Some personal statement",
+      userProfilePicture: "/images/portfolio_6.jpeg"
+    },
+    { 
+      username: "anotherPerson",
+      userDescription: "I do things",
+      userProfilePicture: "/images/portfolio_6.jpeg"
+    }
+  ]
   return (
     <>
       <Head>
@@ -45,10 +32,22 @@ export default function Search() {
         <PageHeading 
           bgSrc="/images/search_banner.png"
           />
-        <Spacing lg="30" md="20"/>
         <Div className="container">
           <SearchInput />
         </Div>
+        <Spacing lg="30" md="20" />
+        {userData.map(user => (
+          <>
+            <Div className="container">
+              <UserDetails 
+                username={user.username}
+                userStatement={user.userDescription}
+                profileImg={user.userProfilePicture}
+            />
+            </Div>
+            <Spacing lg="20" md="10" />
+          </>
+        ))}
       </Layout>
     </>
   )
