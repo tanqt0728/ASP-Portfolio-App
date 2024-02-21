@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Layout from '../components/Layout';
 import Hero from '../components/Hero';
-import UserHeading from "../components/PageHeading/UserHeading"
+import PageHeading from "../components/PageHeading"
 import Div from "../components/Div";
 import UserDetails from "../components/User"
 import Spacing from '../components/Spacing';
@@ -11,7 +11,7 @@ const UserPage = () => {
   const userData = {
     username: "somePerson",
     userDescription: "Some personal statement",
-    userBanner: "/images/about_hero_bg.jpeg",
+    userBanner: "/images/search_banner.png",
     userProfilePicture: "/images/portfolio_6.jpeg"
   }
   const userExperience = {
@@ -41,11 +41,8 @@ const UserPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <UserHeading 
-          title="My portfolio" 
+        <PageHeading 
           bgSrc={userData.userBanner} 
-          pageLinkText="Portfolio" 
-          userImage={userData.userProfilePicture}
           />
         <Spacing lg="30" md="20"/>
         <Div className="container">
