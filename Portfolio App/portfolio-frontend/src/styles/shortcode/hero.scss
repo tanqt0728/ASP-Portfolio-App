@@ -69,10 +69,8 @@
 }
 .cs-hero.cs-style1 {
   position: relative;
-  padding: 250px 0 170px;
-  height: calc(100vh + 180px);
-  min-height: 1000px;
-  
+  padding: 130px 0 10px;
+  height: 800px;
   .cs-hero_title {
     font-size: 120px;
     font-weight: 700;
@@ -424,10 +422,6 @@
   }
 }
 @media screen and (max-width: 1540px) {
-  .cs-hero.cs-style1 {
-    padding-top: 220px;
-    min-height: 960px;
-  }
   .cs-hero.cs-style2 {
     height: 864px;
     .cs-hero_tab_item h2 {
@@ -453,12 +447,13 @@
   }
 }
 @media screen and (max-width: 1400px) {
+  .cs-hero.cs-style1 {
+    height: 700px;
+  }
   .cs-hero.cs-style2 {
     height: 900px;
   }
   .cs-hero.cs-style1 {
-    padding-top: 200px;
-    min-height: 880px;
     .cs-hero_title {
       font-size: 100px;
     }
@@ -507,7 +502,7 @@
 }
 @media screen and (max-width: 1199px) {
   .cs-hero.cs-style1 {
-    min-height: 850px;
+    height: 600px;
     .cs-hero_title {
       font-size: 80px;
     }
@@ -608,11 +603,11 @@
 
 @media screen and (max-width: 991px) {
   .cs-hero.cs-style1 {
-    padding-top: 60px;
-    padding-bottom: 260px;
+    padding-top: 0;
+    // padding-bottom: 100px;
     display: flex;
     align-items: center;
-    min-height: 680px;
+    height: 600px;
     .cs-hero_info {
       flex-direction: column-reverse;
       align-items: flex-start;
@@ -650,7 +645,8 @@
     }
   }
   .cs-hero.cs-style3 {
-    padding: 160px 0 120px;
+    // padding: 160px 0 120px;
+    height: 500px;
   }
   .cs-hero.cs-style1.cs-type2 {
     .cs-hero_title {
@@ -659,6 +655,11 @@
   }
   .cs-hero.cs-style5 {
     padding: 80px 15px 80px 100px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .cs-hero_text {
+    text-align: center;
   }
 }
 @media screen and (max-width: 575px) {
@@ -744,10 +745,9 @@
 }
 @media only screen and (min-width: 768px) and (max-width: 1150px) {
   .cs-hero.cs-style1 {
-    height: initial;
-    min-height: initial;
-    padding-top: 200px;
-    padding-bottom: 350px;
+    // height: 650px;
+    // padding-top: 200px;
+    // padding-bottom: 350px;
     .cs-down_btn {
       bottom: 220px;
     }
