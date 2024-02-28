@@ -1,3 +1,5 @@
+$userLoggedIn: false;
+
 .cs-site_header {
   position: relative;
   z-index: 101;
@@ -218,7 +220,7 @@
     bottom: 0;
     right: 0;
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       height: 100%;
       width: 100%;
@@ -245,7 +247,7 @@
   z-index: 100;
   &::before,
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 50%;
     height: 2px;
@@ -354,13 +356,34 @@
       flex-wrap: wrap;
       height: inherit;
 
+      &.loggedIn {
+        > li {
+          &:nth-last-child(-n + 2) {
+            margin-right: 50px;
+            margin-left: 0;
+          }
+
+          &:last-child {
+            margin-right: 0;
+            margin-left: 500px;
+          }
+        }
+      }
+
       > li {
         margin-right: 50px;
         height: inherit;
 
+        &:nth-last-child(-n + 2) {
+          @if not $userLoggedIn {
+            margin-right: 0;
+            margin-left: 500px;
+          }
+        }
+
         &:last-child {
           margin-right: 0;
-          margin-left: 300px;
+          margin-left: 50px;
         }
 
         > a {
@@ -388,7 +411,7 @@
           > a {
             position: relative;
             &::after {
-              content: '';
+              content: "";
               display: inline-block;
               height: 8px;
               width: 8px;
@@ -533,7 +556,7 @@
 
     &:before,
     &:after {
-      content: '';
+      content: "";
       display: block;
       position: absolute;
       left: 50%;
@@ -617,7 +640,7 @@
       transition-delay: 0.2s;
 
       &:before {
-        content: '';
+        content: "";
         position: absolute;
         margin-top: -9px;
         transition-property: margin, transform;
@@ -626,7 +649,7 @@
       }
 
       &:after {
-        content: '';
+        content: "";
         position: absolute;
         margin-top: 9px;
         transition-property: margin, transform;

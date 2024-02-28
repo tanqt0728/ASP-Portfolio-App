@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import SocialWidget from '../Widget/SocialWidget';
-import Newsletter from '../Widget/Newsletter';
-import ContactInfoWidget from '../Widget/ContactInfoWidget';
-import Div from '../Div';
-import DropDown from './DropDown';
-import Link from 'next/link';
+import React, { useEffect, useState } from "react";
+import SocialWidget from "../Widget/SocialWidget";
+import Newsletter from "../Widget/Newsletter";
+import ContactInfoWidget from "../Widget/ContactInfoWidget";
+import Div from "../Div";
+import DropDown from "./DropDown";
+import Link from "next/link";
 import { useAuth } from "../../contexts/AuthContext";
 
 export default function Header({ variant }) {
@@ -14,7 +14,7 @@ export default function Header({ variant }) {
   const [sideHeaderToggle, setSideHeaderToggle] = useState(false);
   const [mobileToggle, setMobileToggle] = useState(false);
   useEffect(() => {
-    window.addEventListener('scroll', () => {
+    window.addEventListener("scroll", () => {
       if (window.scrollY > 0) {
         setIsSticky(true);
       } else {
@@ -27,8 +27,8 @@ export default function Header({ variant }) {
     <>
       <header
         className={`cs-site_header cs-style1 text-uppercase ${
-          variant ? variant : ''
-        } cs-sticky_header ${isSticky ? 'cs-sticky_header_active' : ''}`}
+          variant ? variant : ""
+        } cs-sticky_header ${isSticky ? "cs-sticky_header_active" : ""}`}
       >
         <Div className="cs-main_header">
           <Div className="container">
@@ -42,7 +42,7 @@ export default function Header({ variant }) {
                 <Div className="cs-nav cs-primary_font cs-medium">
                   <ul
                     className="cs-nav_list"
-                    style={{ display: `${mobileToggle ? 'block' : 'none'}` }}
+                    style={{ display: `${mobileToggle ? "block" : "none"}` }}
                   >
                     <li>
                       <Link href="/" onClick={() => setMobileToggle(false)}>
@@ -50,7 +50,10 @@ export default function Header({ variant }) {
                       </Link>
                     </li>
                     <li>
-                      <Link href="/portfolio" onClick={() => setMobileToggle(false)}>
+                      <Link
+                        href="/portfolio"
+                        onClick={() => setMobileToggle(false)}
+                      >
                         Portfolio
                       </Link>
                     </li>
@@ -58,12 +61,21 @@ export default function Header({ variant }) {
                       // Displayed when user is logged in
                       <>
                         <li>
-                          <Link href="/dashboard" onClick={() => setMobileToggle(false)}>
+                          <Link
+                            href="/dashboard"
+                            onClick={() => setMobileToggle(false)}
+                          >
                             Dashboard
                           </Link>
                         </li>
                         <li>
-                          <a href="#" onClick={() => {logout(); setMobileToggle(false);}}>
+                          <a
+                            href="#"
+                            onClick={() => {
+                              logout();
+                              setMobileToggle(false);
+                            }}
+                          >
                             Logout
                           </a>
                         </li>
@@ -71,7 +83,10 @@ export default function Header({ variant }) {
                     ) : (
                       // Displayed when no user is logged in
                       <li>
-                        <Link href="/auth/login" onClick={() => setMobileToggle(false)}>
+                        <Link
+                          href="/auth/login"
+                          onClick={() => setMobileToggle(false)}
+                        >
                           Sign Up | Login
                         </Link>
                       </li>
@@ -80,8 +95,8 @@ export default function Header({ variant }) {
                   <span
                     className={
                       mobileToggle
-                        ? 'cs-munu_toggle cs-toggle_active'
-                        : 'cs-munu_toggle'
+                        ? "cs-munu_toggle cs-toggle_active"
+                        : "cs-munu_toggle"
                     }
                     onClick={() => setMobileToggle(!mobileToggle)}
                   >

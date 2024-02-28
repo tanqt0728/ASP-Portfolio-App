@@ -1,54 +1,54 @@
 import * as React from "react";
-import Head from 'next/head';
-import Card from '../components/Card';
-import Cta from '../components/Cta';
-import Div from '../components/Div';
-import FunFact from '../components/FunFact';
-import Hero from '../components/Hero';
-import Layout from '../components/Layout';
-import LogoList from '../components/LogoList';
-import MovingText from '../components/MovingText';
-import SectionHeading from '../components/SectionHeading';
-import PortfolioSlider from '../components/Slider/PortfolioSlider';
-import PostSlider from '../components/Slider/PostSlider';
-import TeamSlider from '../components/Slider/TeamSlider';
-import TestimonialSlider from '../components/Slider/TestimonialSlider';
-import TimelineSlider from '../components/Slider/TimelineSlider';
-import Spacing from '../components/Spacing';
-import VideoModal from '../components/VideoModal';
+import Head from "next/head";
+import Card from "../components/Card";
+import Cta from "../components/Cta";
+import Div from "../components/Div";
+import FunFact from "../components/FunFact";
+import Hero from "../components/Hero";
+import Layout from "../components/Layout";
+import LogoList from "../components/LogoList";
+import MovingText from "../components/MovingText";
+import SectionHeading from "../components/SectionHeading";
+import PortfolioSlider from "../components/Slider/PortfolioSlider";
+import PostSlider from "../components/Slider/PostSlider";
+import TeamSlider from "../components/Slider/TeamSlider";
+import TestimonialSlider from "../components/Slider/TestimonialSlider";
+import TimelineSlider from "../components/Slider/TimelineSlider";
+import Spacing from "../components/Spacing";
+import VideoModal from "../components/VideoModal";
 import Button from "../components/Button";
-import PortfoliosExplore from "../components/PortfoliosExplore"
+import PortfoliosExplore from "../components/PortfoliosExplore";
 
 export default function Home() {
   // Hero Social Links
   const heroSocialLinks = [
     {
-      name: 'Behance',
-      links: '/',
+      name: "Behance",
+      links: "/",
     },
     {
-      name: 'Twitter',
-      links: '/',
+      name: "Twitter",
+      links: "/",
     },
   ];
 
   // FunFact Data
   const funfaceData = [
     {
-      title: 'Global Happy Clients',
-      factNumber: '40K',
+      title: "Global Happy Clients",
+      factNumber: "40K",
     },
     {
-      title: 'Project Completed',
-      factNumber: '50K',
+      title: "Project Completed",
+      factNumber: "50K",
     },
     {
-      title: 'Team Members',
-      factNumber: '245',
+      title: "Team Members",
+      factNumber: "245",
     },
     {
-      title: 'Digital products',
-      factNumber: '550',
+      title: "Digital products",
+      factNumber: "550",
     },
   ];
 
@@ -149,7 +149,7 @@ export default function Home() {
 
         {/* Start Portfolio Section */}
         <Spacing lg="60" md="60" />
-        <PortfoliosExplore 
+        <PortfoliosExplore
           title="Portfolio to explore"
           subtitle="Latest Projects"
           variant="cs-style1 text-center"
@@ -157,7 +157,6 @@ export default function Home() {
           btnText="Search portfolios"
         />
         {/* End Portfolio Section */}
-
 
         {/* Start Awards Section */}
         {/* <Spacing lg="150" md="80" />
