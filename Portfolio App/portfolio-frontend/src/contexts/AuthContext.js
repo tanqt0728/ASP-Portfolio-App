@@ -31,10 +31,11 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
+    console.log(token);
     if (token) {
       validateTokenAndFetchUser(token).then(user => {
         if (user) setUser(user);
-      }).catch(err => setError(err.message));
+      }).catch(err => console.log(err.message));
     }
   }, []);
 
@@ -51,7 +52,7 @@ export const AuthProvider = ({ children }) => {
         setError(data.message || 'Login failed');
         return false;
       }
-      setUser(data.result);
+      setUser(data);
       localStorage.setItem('token', data.token);
       return true;
     } catch (err) {
