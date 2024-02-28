@@ -63,10 +63,18 @@ export default function Header({ variant }) {
                         </li>
                         <li>
                           <Link
-                            href="portfolio/edit"
+                            href="/portfolio/edit"
                             onClick={() => setMobileToggle(false)}
                           >
                             Portfolio
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href="/search"
+                            onClick={() => setMobileToggle(false)}
+                          >
+                            Search
                           </Link>
                         </li>
                         <li>

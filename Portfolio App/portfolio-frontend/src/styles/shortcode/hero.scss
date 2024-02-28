@@ -16,7 +16,7 @@
   padding-bottom: 35px;
   white-space: nowrap;
   &::after {
-    content: '';
+    content: "";
     height: 15px;
     width: 2px;
     background-color: #999696;
@@ -43,7 +43,7 @@
     }
     &:not(:last-child) {
       &::after {
-        content: '';
+        content: "";
         height: 2px;
         width: 15px;
         background-color: #999696;
@@ -72,8 +72,8 @@
   padding: 130px 0 10px;
   height: 800px;
   .cs-hero_title {
-    font-size: 120px;
-    font-weight: 700;
+    font-size: 90px;
+    font-weight: 600;
     margin-bottom: 60px;
     line-height: 1.25em;
     text-shadow: 0 0 10px $black;
@@ -82,7 +82,7 @@
     }
   }
   .cs-hero_subtitle {
-    font-size: 18px;
+    font-size: 24px;
     line-height: 1.9em;
     color: $primary;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
@@ -154,7 +154,7 @@
     color: transparent;
   }
   &::before {
-    content: '';
+    content: "";
     height: 5px;
     width: 5px;
     border-radius: 50%;
@@ -184,7 +184,7 @@
         color: inherit;
       }
       &::before {
-        content: '';
+        content: "";
         position: absolute;
         height: 5px;
         width: 0%;

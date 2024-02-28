@@ -1,26 +1,25 @@
-import React from 'react';
-import Head from 'next/head';
-import Layout from '../../components/Layout';
-import PageHeading from "../../components/PageHeading";
-import Div from "../../components/Div";
-import UserDetails from "../../components/User"
-import Spacing from '../../components/Spacing';
-import SearchInput from '../../components/SearchInput';
-
+import React from "react";
+import Head from "next/head";
+import Layout from "../components/Layout";
+import PageHeading from "../components/PageHeading";
+import Div from "../components/Div";
+import UserDetails from "../components/User";
+import Spacing from "../components/Spacing";
+import SearchInput from "../components/SearchInput";
 
 export default function Search() {
-    const userData = [
-    { 
+  const userData = [
+    {
       username: "somePerson",
       userDescription: "Some personal statement",
-      userProfilePicture: "/images/portfolio_6.jpeg"
+      userProfilePicture: "/images/portfolio_6.jpeg",
     },
-    { 
+    {
       username: "anotherPerson",
       userDescription: "I do things",
-      userProfilePicture: "/images/portfolio_6.jpeg"
-    }
-  ]
+      userProfilePicture: "/images/portfolio_6.jpeg",
+    },
+  ];
   return (
     <>
       <Head>
@@ -29,26 +28,24 @@ export default function Search() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <PageHeading 
-          bgSrc="/images/search_banner.png"
-          />
+        <PageHeading bgSrc="/images/search_banner.png" />
         <Div className="container">
           <SearchInput />
         </Div>
         <Spacing lg="30" md="20" />
-        {userData.map(user => (
+        {userData.map((user) => (
           <>
             <Div className="container">
-              <UserDetails 
+              <UserDetails
                 username={user.username}
                 userStatement={user.userDescription}
                 profileImg={user.userProfilePicture}
-            />
+              />
             </Div>
             <Spacing lg="20" md="10" />
           </>
         ))}
       </Layout>
     </>
-  )
+  );
 }

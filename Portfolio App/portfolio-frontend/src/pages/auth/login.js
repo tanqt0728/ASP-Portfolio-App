@@ -3,15 +3,14 @@ import { useAuth } from "../../contexts/AuthContext";
 import { useRouter } from "next/router";
 import CryptoJS from "crypto-js"; // Import CryptoJS
 
-import React from 'react';
-import Head from 'next/head';
-import Layout from '../../components/Layout';
-import PageHeading from "../../components/PageHeading"
+import React from "react";
+import Head from "next/head";
+import Layout from "../../components/Layout";
+import PageHeading from "../../components/PageHeading";
 import Div from "../../components/Div";
-import Spacing from '../../components/Spacing';
-import Button from '../../components/Button';
+import Spacing from "../../components/Spacing";
+import Button from "../../components/Button";
 import Link from "next/link";
-
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -31,8 +30,7 @@ export default function Login() {
     try {
       const success = await login(email, hashedPassword);
       if (success) {
-        alert("Login successful! Redirecting..."); // Notify user
-        router.push("/"); // Adjust the redirect route as needed
+        router.push("/");
       } else {
         setLocalError(
           authError || "Failed to log in. Please check your credentials."
@@ -51,20 +49,14 @@ export default function Login() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <PageHeading
-          bgSrc="/images/search_banner.png"
-        />
+        <PageHeading bgSrc="/images/search_banner.png" />
         <Spacing lg="30" md="20" />
         <Div className="auth-container cs-radius_7">
           <h2>Login</h2>
           {localError && <p className="mb-4 text-red-500">{localError}</p>}
           <form onSubmit={handleSubmit}>
             <Div className="cs-auth_input_container">
-              <label
-                htmlFor="email"
-              >
-                Email
-              </label>
+              <label htmlFor="email">Email</label>
               <input
                 id="email"
                 type="email"
@@ -76,11 +68,7 @@ export default function Login() {
               />
             </Div>
             <Div className="cs-auth_input_container">
-              <label
-                htmlFor="password"
-              >
-                Password
-              </label>
+              <label htmlFor="password">Password</label>
               <input
                 id="password"
                 type="password"
@@ -92,10 +80,7 @@ export default function Login() {
               />
             </Div>
             <Div className="cs-auth_button_container">
-              <button
-                type="submit"
-                className="cs-auth_button cs-radius_5"
-              >
+              <button type="submit" className="cs-auth_button cs-radius_5">
                 Login
               </button>
               <Button
@@ -106,7 +91,7 @@ export default function Login() {
             </Div>
           </form>
           <Div className="cs-auth_signup_prompt text-center">
-            <p>Don't have an account?</p>
+            <p>Don&apos;t have an account?</p>
             <Button
               btnLink="/auth/signup"
               btnText="Sign Up"
@@ -116,70 +101,5 @@ export default function Login() {
         </Div>
       </Layout>
     </>
-    // <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-    //   <div className="p-8 bg-white shadow-md rounded-lg">
-    //     <h2 className="text-2xl font-semibold mb-4">Login</h2>
-    //     {localError && <p className="mb-4 text-red-500">{localError}</p>}
-    //     <form onSubmit={handleSubmit} className="space-y-4">
-    //       <div>
-    //         <label
-    //           htmlFor="email"
-    //           className="block text-sm font-medium text-gray-700"
-    //         >
-    //           Email
-    //         </label>
-    //         <input
-    //           id="email"
-    //           type="email"
-    //           value={email}
-    //           onChange={(e) => setEmail(e.target.value)}
-    //           placeholder="Email"
-    //           required
-    //           className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm"
-    //         />
-    //       </div>
-    //       <div>
-    //         <label
-    //           htmlFor="password"
-    //           className="block text-sm font-medium text-gray-700"
-    //         >
-    //           Password
-    //         </label>
-    //         <input
-    //           id="password"
-    //           type="password"
-    //           value={password}
-    //           onChange={(e) => setPassword(e.target.value)}
-    //           placeholder="Password"
-    //           required
-    //           className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm"
-    //         />
-    //       </div>
-    //       <div className="flex items-center justify-between">
-    //         <button
-    //           type="submit"
-    //           className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-200"
-    //         >
-    //           Login
-    //         </button>
-    //         <Link
-    //           href="/auth/forgot-password"
-    //           className="text-sm text-blue-600 hover:underline"
-    //         >
-    //           Forgot password?
-    //         </Link>
-    //       </div>
-    //     </form>
-    //     <div className="mt-4 text-center">
-    //       <p className="text-sm text-gray-600">{"Don't have an account?"}</p>
-    //       <Link
-    //         href="/auth/signup"
-    //         className="text-sm text-blue-600 hover:underline"
-    //       >
-    //         Sign Up
-    //       </Link>
-    //     </div>
-    //   </div>
-    // </div>
   );
 }
