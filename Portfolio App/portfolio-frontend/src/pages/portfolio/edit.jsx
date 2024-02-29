@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import grapesjs from "grapesjs";
 import plugin from "grapesjs-blocks-basic";
 import { getPageByUserId, updatePage } from "../api/api";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import useAuth from "../../hooks/useAuth";
 
 const Editor = () => {
@@ -79,13 +79,13 @@ const Editor = () => {
           slug,
         });
         console.log("Page saved successfully:", updatedPage);
-        alert("Page saved successfully.");
+        toast.success("Page saved successfully.");
       } catch (error) {
         console.error("Failed to save page:", error);
-        alert("Failed to save page. Please try again.");
+        toast.error("Failed to save page. Please try again.");
       }
     } else {
-      alert(
+      toast.error(
         "Editor or page data is not loaded properly. Please refresh and try again."
       );
     }
@@ -198,11 +198,11 @@ const Editor = () => {
             </Div>
           </Div>
           <Spacing lg="40" md="20" />
-
           <div className="App">
             <div id="editor"></div>
           </div>
         </div>
+        <ToastContainer />
       </Layout>
     </>
   );

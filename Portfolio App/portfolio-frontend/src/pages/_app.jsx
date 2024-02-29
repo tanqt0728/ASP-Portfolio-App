@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "slick-carousel/slick/slick.css";
 import "grapesjs/dist/css/grapes.min.css";
+import "react-toastify/dist/ReactToastify.css";
 import "@/styles/globals.scss";
 import { AuthProvider } from "../contexts/AuthContext";
 import React from "react";

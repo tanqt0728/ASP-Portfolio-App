@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
-
-import React from 'react';
-import Head from 'next/head';
-import Layout from '../../components/Layout';
-import PageHeading from "../../components/PageHeading"
+import { ToastContainer, toast } from "react-toastify";
+import React from "react";
+import Head from "next/head";
+import Layout from "../../components/Layout";
+import PageHeading from "../../components/PageHeading";
 import Div from "../../components/Div";
-import Spacing from '../../components/Spacing';
-import Button from '../../components/Button';
+import Spacing from "../../components/Spacing";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -17,11 +16,11 @@ export default function ForgotPassword() {
     e.preventDefault();
     try {
       await forgotPassword(email);
-      alert(
+      toast.success(
         "If an account with that email exists, we have sent you an email to reset your password."
       );
     } catch (error) {
-      alert("Failed to send reset password email");
+      toast.error("Failed to send reset password email");
     }
   };
 
@@ -33,17 +32,13 @@ export default function ForgotPassword() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <PageHeading
-          bgSrc="/images/search_banner.png"
-        />
+        <PageHeading bgSrc="/images/search_banner.png" />
         <Spacing lg="30" md="20" />
         <Div className="auth-container cs-radius_7">
           <h2>Forgot Password</h2>
           <form onSubmit={handleSubmit}>
             <Div className="cs-auth_input_container">
-              <label>
-                Email
-              </label>
+              <label>Email</label>
               <input
                 type="email"
                 value={email}
@@ -54,29 +49,14 @@ export default function ForgotPassword() {
               />
             </Div>
             <Div className="cs-auth_button_container">
-              <button
-                type="submit"
-                className="cs-auth_button cs-radius_5"
-              >
+              <button type="submit" className="cs-auth_button cs-radius_5">
                 Reset password
               </button>
             </Div>
           </form>
         </Div>
+        <ToastContainer />
       </Layout>
     </>
-    // <div>
-    //   <h2>Forgot Password</h2>
-    //   <form onSubmit={handleSubmit}>
-    //     <input
-    //       type="email"
-    //       value={email}
-    //       onChange={(e) => setEmail(e.target.value)}
-    //       placeholder="Enter your email"
-    //       required
-    //     />
-    //     <button type="submit">Reset Password</button>
-    //   </form>
-    // </div>
   );
 }

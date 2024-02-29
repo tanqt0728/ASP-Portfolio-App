@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { useRouter } from "next/router";
-import CryptoJS from "crypto-js"; // Import CryptoJS
-
+import CryptoJS from "crypto-js";
 import React from "react";
 import Head from "next/head";
 import Layout from "../../components/Layout";
@@ -10,7 +9,7 @@ import PageHeading from "../../components/PageHeading";
 import Div from "../../components/Div";
 import Spacing from "../../components/Spacing";
 import Button from "../../components/Button";
-import Link from "next/link";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -35,6 +34,7 @@ export default function Login() {
         setLocalError(
           authError || "Failed to log in. Please check your credentials."
         );
+        toast.error("Failed to log in. Please check your credentials.");
       }
     } catch (error) {
       setLocalError("Failed to log in. Please check your credentials.");
@@ -99,6 +99,7 @@ export default function Login() {
             />
           </Div>
         </Div>
+        <ToastContainer />
       </Layout>
     </>
   );

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { useRouter } from "next/router";
-
+import { ToastContainer, toast } from "react-toastify";
 import React from "react";
 import Head from "next/head";
 import Layout from "../../components/Layout";
@@ -44,7 +44,7 @@ export default function Signup() {
       alert(success);
 
       if (success) {
-        alert("Sign Up successful! Redirecting...");
+        toast.success("Sign Up successful! Redirecting...");
         router.push("/auth/login");
       } else {
         // If not successful, setError is already called in signup function with appropriate message
@@ -189,6 +189,7 @@ export default function Signup() {
             />
           </Div>
         </Div>
+        <ToastContainer />
       </Layout>
     </>
   );

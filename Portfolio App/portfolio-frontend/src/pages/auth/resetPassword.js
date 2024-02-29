@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { useAuth } from "../../contexts/AuthContext";
-
-import React from 'react';
-import Head from 'next/head';
-import Layout from '../../components/Layout';
-import PageHeading from "../../components/PageHeading"
+import { ToastContainer, toast } from "react-toastify";
+import React from "react";
+import Head from "next/head";
+import Layout from "../../components/Layout";
+import PageHeading from "../../components/PageHeading";
 import Div from "../../components/Div";
-import Spacing from '../../components/Spacing';
-import Button from '../../components/Button';
+import Spacing from "../../components/Spacing";
 
 export default function ResetPassword() {
   const [password, setPassword] = useState("");
@@ -19,15 +18,15 @@ export default function ResetPassword() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!token || typeof token !== "string") {
-      alert("Token is invalid or expired");
+      toast.error("Token is invalid or expired");
       return;
     }
     try {
       await resetPassword(password, token);
-      alert("Your password has been reset successfully");
+      toast.success("Your password has been reset successfully");
       router.push("/auth/login");
     } catch (error) {
-      alert("Failed to reset password");
+      toast.error("Failed to reset password");
     }
   };
 
@@ -39,17 +38,13 @@ export default function ResetPassword() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <PageHeading
-          bgSrc="/images/search_banner.png"
-        />
+        <PageHeading bgSrc="/images/search_banner.png" />
         <Spacing lg="30" md="20" />
         <Div className="auth-container cs-radius_7">
           <h2>Reset Password</h2>
           <form onSubmit={handleSubmit}>
             <Div className="cs-auth_input_container">
-              <label>
-                Password
-              </label>
+              <label>Password</label>
               <input
                 type="password"
                 value={password}
@@ -60,29 +55,14 @@ export default function ResetPassword() {
               />
             </Div>
             <Div className="cs-auth_button_container">
-              <button
-                type="submit"
-                className="cs-auth_button cs-radius_5"
-              >
+              <button type="submit" className="cs-auth_button cs-radius_5">
                 Change password
               </button>
             </Div>
           </form>
         </Div>
+        <ToastContainer />
       </Layout>
     </>
-    // <div>
-    //   <h2>Reset Password</h2>
-    //   <form onSubmit={handleSubmit}>
-    //     <input
-    //       type="password"
-    //       value={password}
-    //       onChange={(e) => setPassword(e.target.value)}
-    //       placeholder="New Password"
-    //       required
-    //     />
-    //     <button type="submit">Change Password</button>
-    //   </form>
-    // </div>
   );
 }
