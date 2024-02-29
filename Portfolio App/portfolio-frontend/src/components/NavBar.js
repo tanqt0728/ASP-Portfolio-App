@@ -37,7 +37,7 @@ export default function Header({ variant }) {
             <Div className="cs-main_header_in">
               <Div className="cs-main_header_left">
                 <Link className="cs-site_branding" href="/">
-                  <img src="Pixel-Projects-Logo.png" alt="Logo" />
+                  <img src="/Pixel-Projects-Logo.png" alt="Logo" />
                 </Link>
               </Div>
               <Div className="cs-main_header_center">
@@ -85,6 +85,14 @@ export default function Header({ variant }) {
                       </>
                     ) : (
                       <>
+                        <li>
+                          <Link
+                            href="/search"
+                            onClick={() => setMobileToggle(false)}
+                          >
+                            Search
+                          </Link>
+                        </li>
                         <li>
                           <Link
                             href="/auth/signup"

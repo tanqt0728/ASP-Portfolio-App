@@ -69,34 +69,32 @@
 }
 .cs-hero.cs-style1 {
   position: relative;
-  padding: 130px 0 10px;
-  height: 800px;
+  padding: 180px 0 170px;
+  height: calc(100vh + 180px);
+  min-height: 1000px;
   .cs-hero_title {
-    font-size: 90px;
-    font-weight: 600;
+    font-size: 115px;
+    font-weight: 700;
     margin-bottom: 60px;
-    line-height: 1.25em;
-    text-shadow: 0 0 10px $black;
+    line-height: 1.2em;
     span {
       color: $accent;
     }
   }
   .cs-hero_subtitle {
-    font-size: 24px;
+    font-size: 20px;
     line-height: 1.9em;
     color: $primary;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
   }
   .cs-hero_info {
     display: flex;
     align-items: center;
     > div {
-      width: 50%;
+      width: 60%;
       flex: none;
     }
   }
   .cs-hero_text {
-    background-color: rbga($black, 1);
     position: relative;
     z-index: 3;
   }
@@ -422,6 +420,10 @@
   }
 }
 @media screen and (max-width: 1540px) {
+  .cs-hero.cs-style1 {
+    padding: 180px 0 170px;
+    min-height: 960px;
+  }
   .cs-hero.cs-style2 {
     height: 864px;
     .cs-hero_tab_item h2 {
@@ -447,15 +449,14 @@
   }
 }
 @media screen and (max-width: 1400px) {
-  .cs-hero.cs-style1 {
-    height: 700px;
-  }
   .cs-hero.cs-style2 {
     height: 900px;
   }
   .cs-hero.cs-style1 {
+    padding: 180px 0 170px;
+    min-height: 880px;
     .cs-hero_title {
-      font-size: 100px;
+      font-size: 110px;
     }
   }
   .cs-hero.cs-style3 {
@@ -502,12 +503,13 @@
 }
 @media screen and (max-width: 1199px) {
   .cs-hero.cs-style1 {
-    height: 600px;
+    padding: 160px 0 140px;
+    min-height: 850px;
     .cs-hero_title {
-      font-size: 80px;
+      font-size: 100px;
     }
     .cs-hero_subtitle {
-      font-size: 16px;
+      font-size: 20px;
     }
   }
   .cs-hero.cs-style3 {
@@ -603,21 +605,21 @@
 
 @media screen and (max-width: 991px) {
   .cs-hero.cs-style1 {
-    padding-top: 0;
-    // padding-bottom: 100px;
+    padding-top: 40px;
+    padding-bottom: 180px;
     display: flex;
     align-items: center;
-    height: 600px;
+    min-height: 680px;
     .cs-hero_info {
       flex-direction: column-reverse;
       align-items: flex-start;
     }
     .cs-hero_title {
-      font-size: 56px;
-      margin-bottom: 20px;
+      font-size: 70px;
+      margin-bottom: 50px;
     }
     .cs-hero_subtitle {
-      margin-bottom: 24px;
+      margin-bottom: 10px;
       max-width: 500px;
     }
     .cs-hero_info > div {
@@ -645,8 +647,7 @@
     }
   }
   .cs-hero.cs-style3 {
-    // padding: 160px 0 120px;
-    height: 500px;
+    padding: 160px 0 120px;
   }
   .cs-hero.cs-style1.cs-type2 {
     .cs-hero_title {
@@ -657,15 +658,10 @@
     padding: 80px 15px 80px 100px;
   }
 }
-@media screen and (max-width: 767px) {
-  .cs-hero_text {
-    text-align: center;
-  }
-}
 @media screen and (max-width: 575px) {
   .cs-hero.cs-style1 {
     .cs-hero_title {
-      font-size: 42px;
+      font-size: 56px;
       br {
         display: none;
       }
@@ -745,9 +741,10 @@
 }
 @media only screen and (min-width: 768px) and (max-width: 1150px) {
   .cs-hero.cs-style1 {
-    // height: 650px;
-    // padding-top: 200px;
-    // padding-bottom: 350px;
+    height: initial;
+    min-height: initial;
+    padding-top: 180px;
+    padding-bottom: 180px;
     .cs-down_btn {
       bottom: 220px;
     }

@@ -1,4 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { Icon } from "@iconify/react";
+import Head from "next/head";
+import Layout from "../../components/Layout";
+import Spacing from "../../components/Spacing";
+import Cta from "../../components/Cta";
+import Div from "../../components/Div";
 import { useRouter } from "next/router";
 import grapesjs from "grapesjs";
 import plugin from "grapesjs-blocks-basic";
@@ -104,65 +110,101 @@ const Editor = () => {
   };
 
   return (
-    <div>
-      <style jsx global>{`
-        body {
-          margin: 0;
-          padding: 0;
-        }
-
-        html {
-          overflow: scroll;
-          overflow-x: hidden;
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-
-        html::-webkit-scrollbar {
-          display: none;
-        }
-        #editor {
-          height: 100vh;
-        }
-      `}</style>
-
-      <div className="App">
-        <h2>{page?.name}</h2>
+    <>
+      <Head>
+        <title>Home - Pixel Projects</title>
+        <meta
+          name="description"
+          content="Create your personalized portfolio with Pixel Projects today."
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Spacing lg="100" md="100" />
+      <Cta
+        title={page?.name}
+        bgSrc="/images/cta_bg_2.jpeg"
+        variant="rounded-0"
+      />
+      <Layout>
         <div>
-          <label htmlFor="visibility">Visibility:</label>
-          <select
-            id="visibility"
-            value={visibility}
-            onChange={(e) => setVisibility(e.target.value)}
-          >
-            <option value="published">Published</option>
-            <option value="unpublished">Unpublished</option>
-          </select>
+          <style jsx global>{`
+            body {
+              margin: 0;
+              padding: 0;
+            }
+
+            html {
+              overflow: scroll;
+              overflow-x: hidden;
+              -ms-overflow-style: none;
+              scrollbar-width: none;
+            }
+
+            html::-webkit-scrollbar {
+              display: none;
+            }
+            #editor {
+              height: 100vh;
+            }
+          `}</style>
+          <Spacing lg="20" md="10" />
+          <Div className="container">
+            <Div className="row">
+              <Div className="col-lg-6">
+                <label className="cs-primary_color" htmlFor="visibility">
+                  Set Visibility:
+                </label>
+                <select
+                  className="cs-form_field"
+                  id="visibility"
+                  value={visibility}
+                  onChange={(e) => setVisibility(e.target.value)}
+                >
+                  <option className="cs-secondary_color" value="published">
+                    Published
+                  </option>
+                  <option className="cs-secondary_color" value="unpublished">
+                    Unpublished
+                  </option>
+                </select>
+              </Div>
+              <Div className="col-lg-6">
+                <label className="cs-primary_color" htmlFor="slug">
+                  Create Slug:
+                </label>
+                <input
+                  className="cs-form_field"
+                  type="text"
+                  id="slug"
+                  value={slug}
+                  onChange={(e) => setSlug(e.target.value)}
+                />
+              </Div>
+            </Div>
+            <Spacing lg="20" md="10" />
+            <Div className="row">
+              <Div className="col-sm-6">
+                <button className="cs-btn cs-style1" onClick={handleSave}>
+                  <span className="cs-normal">Save Portfolio</span>
+                  <Icon icon="bi:arrow-right" />
+                </button>
+              </Div>
+              <Div className="col-sm-6">
+                <button className="cs-btn cs-style1" onClick={handleShare}>
+                  <span className="cs-normal">Share Portfolio</span>
+                  <Icon icon="bi:arrow-right" />
+                </button>
+              </Div>
+            </Div>
+          </Div>
+          <Spacing lg="40" md="20" />
+
+          <div className="App">
+            <div id="editor"></div>
+          </div>
         </div>
-        <div>
-          <label htmlFor="slug">Slug:</label>
-          <input
-            type="text"
-            id="slug"
-            value={slug}
-            onChange={(e) => setSlug(e.target.value)}
-          />
-        </div>
-        <button
-          onClick={handleSave}
-          style={{ color: "black", marginTop: "10px" }}
-        >
-          Save
-        </button>
-        <button
-          onClick={handleShare}
-          style={{ color: "black", marginTop: "10px" }}
-        >
-          Share
-        </button>
-        <div id="editor"></div>
-      </div>
-    </div>
+      </Layout>
+    </>
   );
 };
 

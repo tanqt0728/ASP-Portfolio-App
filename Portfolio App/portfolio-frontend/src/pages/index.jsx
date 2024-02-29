@@ -20,13 +20,14 @@ export default function Home() {
       <Layout>
         {/* Start Hero Section */}
         <Hero
-          title="Unleash Your Creativity <br> Every Pixel Tells Your Story."
+          title="Unleash Your Creativity.<br>Every Pixel Tells Your Story."
           subtitle="Empower your online presence with our innovative portfolio creation platform. Showcase your skills, achievements, and creativity effortlessly."
           bgImageUrl="/images/hero_bg.jpg"
         />
         {/* End Hero Section */}
 
         {/* Start FunFact Section */}
+        <Spacing lg="60" md="60" />
         <div className="container">
           <FunFact
             variant="cs-type1"
