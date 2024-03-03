@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const slugify = require('slugify');
+const mongoose = require("mongoose");
+const slugify = require("slugify");
 
 const pageSchema = new mongoose.Schema(
   {
@@ -11,31 +11,36 @@ const pageSchema = new mongoose.Schema(
       type: String,
       unique: true,
     },
-    html: { 
-      type: String,
-      default: '',
+    content: {
+      type: {
+        html: {
+          type: String,
+          default: "",
+        },
+        css: {
+          type: String,
+          default: "",
+        },
+        components: {
+          type: String,
+          default: "",
+        },
+        styles: {
+          type: String,
+          default: "",
+        },
+      },
+      default: {},
     },
-    css: {  
-      type: String,
-      default: '',
-    },
-    components: { 
-      type: String,
-      default: '',
-    },
-    styles: { 
-      type: String,
-      default: '',
-    },
-    owner: { 
+    owner: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
+      ref: "User",
       required: true,
     },
-    visibility: { 
+    visibility: {
       type: String,
-      enum: ['published', 'unpublished'],
-      default: 'unpublished',
+      enum: ["published", "unpublished"],
+      default: "unpublished",
     },
   },
   {
@@ -43,8 +48,6 @@ const pageSchema = new mongoose.Schema(
   }
 );
 
-
-
-const Page = mongoose.model('Page', pageSchema);
+const Page = mongoose.model("Page", pageSchema);
 
 module.exports = Page;

@@ -39,11 +39,11 @@ const Editor = () => {
             pluginOpts: {
               [plugin]: {},
             },
-            components: data.components || "",
-            style: data.styles || "",
+            components: data.content.components || "",
+            style: data.content.styles || "",
           });
-          editor.setComponents(data.html || "");
-          editor.setStyle(data.css || "");
+          editor.setComponents(data.content.html || "");
+          editor.setStyle(data.content.css || "");
           setEditor(editor);
         } else {
           setError("Failed to load page data");
@@ -68,16 +68,16 @@ const Editor = () => {
       const components = JSON.stringify(editor.getComponents());
       const styles = JSON.stringify(editor.getStyle());
 
+      const content = { html, css, components, styles };
+
       try {
         const updatedPage = await updatePage(page._id, {
           name: page.name,
-          html,
-          css,
-          components,
-          styles,
+          content,
           visibility,
           slug,
         });
+
         console.log("Page saved successfully:", updatedPage);
         toast.success("Page saved successfully.");
       } catch (error) {

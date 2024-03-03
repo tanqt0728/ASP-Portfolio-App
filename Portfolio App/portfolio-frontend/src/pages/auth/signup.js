@@ -41,7 +41,7 @@ export default function Signup() {
         contactNumber,
         location
       );
-      alert(success);
+      // alert(success);
 
       if (success) {
         toast.success("Sign Up successful! Redirecting...");
