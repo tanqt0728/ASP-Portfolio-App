@@ -9,6 +9,10 @@ const useAuth = () => {
 
     // Check if the token does not exist
     if (!token) {
+      const currentPath = router.pathname;
+      if (currentPath !== "/auth/login" &&currentPath !=="/auth/signup") {
+        sessionStorage.setItem('preAuthRoute', currentPath);
+      }
       // Redirect to the login page
       router.push("/auth/login");
     }

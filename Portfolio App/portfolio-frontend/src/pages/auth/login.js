@@ -29,8 +29,13 @@ export default function Login() {
     try {
       const success = await login(email, hashedPassword);
       if (success) {
-        router.push("/");
-      } else {
+        const preAuthRoute = sessionStorage.getItem('preAuthRoute') || '/';
+    
+        // Clear the saved route from sessionStorage to avoid unintended redirects in the future
+        sessionStorage.removeItem('preAuthRoute');
+        
+        router.push(preAuthRoute);
+    } else {
         setLocalError(
           authError || "Failed to log in. Please check your credentials."
         );
