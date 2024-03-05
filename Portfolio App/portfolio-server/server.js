@@ -6,11 +6,24 @@ const pageRoutes = require("./routes/PageRoutes");
 const portfolioRoutes = require("./routes/PortfolioRoutes");
 
 require("dotenv").config();
+const allowedOrigins = ['https://portfolio-frontend-app-e00bbe7a076d.herokuapp.com'];
 
 const corsOptions = {
-  origin: "http://localhost:3001", // Allow only your frontend to make requests
+  origin: function (origin, callback) {
+    const allowedOrigins = [
+      'https://portfolio-frontend-app-e00bbe7a076d.herokuapp.com', // Your deployed frontend application
+      'http://localhost:3001' // Your local development environment
+    ];
+    // Check if the origin is one of the allowed origins
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true); // Allow the request
+    } else {
+      callback(new Error('Not allowed by CORS')); // Block the request
+    }
+  },
   credentials: true, // Allow cookies to be sent
 };
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(cors(corsOptions));
