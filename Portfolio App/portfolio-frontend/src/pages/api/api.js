@@ -1,6 +1,7 @@
 import axios from "axios";
+require('dotenv').config();
 
-export const API_HOST = process.env.BACKEND_PUBLIC_API_BASE_URL;
+export const API_HOST = process.env.NEXT_PUBLIC_API_BASE_URL_EDITOR;
 
 export const createPage = async (name, visibility, ownerId) => {
   try {
@@ -124,7 +125,6 @@ export const getPageByUserId = async () => {
         Authorization: `Bearer ${localStorage.getItem('token')}`, 
       },
     });
-    console.log("API Response:", response.data);
     return response.data; 
   } catch (error) {
     console.error("Error getting user's page:", error);
