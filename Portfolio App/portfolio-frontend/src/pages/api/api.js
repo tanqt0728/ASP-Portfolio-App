@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const API_HOST = "http://localhost:3000/api/editor";
+export const API_HOST = process.env.BACKEND_PUBLIC_API_BASE_URL;
 
 export const createPage = async (name, visibility, ownerId) => {
   try {
