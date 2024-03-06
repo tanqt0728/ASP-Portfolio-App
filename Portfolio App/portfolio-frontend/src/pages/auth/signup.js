@@ -174,7 +174,7 @@ export default function Signup() {
               <button
                 type="submit"
                 disabled={loading}
-                className="cs-auth_button cs-radius_5"
+                className="cs-btn cs-style1 cs-auth_button"
               >
                 {loading ? "Signing Up..." : "Sign Up"}
               </button>

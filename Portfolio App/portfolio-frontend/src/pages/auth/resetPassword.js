@@ -55,7 +55,7 @@ export default function ResetPassword() {
               />
             </Div>
             <Div className="cs-auth_button_container">
-              <button type="submit" className="cs-auth_button cs-radius_5">
+              <button type="submit" className="cs-btn cs-style1 cs-auth_button">
                 Change password
               </button>
             </Div>

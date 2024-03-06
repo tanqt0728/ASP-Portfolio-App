@@ -24,10 +24,11 @@ export default function Home() {
           subtitle="Empower your online presence with our innovative portfolio creation platform. Showcase your skills, achievements, and creativity effortlessly."
           bgImageUrl="/images/hero_bg.jpg"
         />
+        <Spacing lg="60" md="60" />
         {/* End Hero Section */}
 
         {/* Start FunFact Section */}
-        <Spacing lg="60" md="60" />
+        <Spacing lg="0" md="40" />
         <div className="container">
           <FunFact
             variant="cs-type1"

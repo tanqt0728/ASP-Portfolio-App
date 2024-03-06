@@ -30,12 +30,12 @@ export default function Login() {
       const success = await login(email, hashedPassword);
       if (success) {
         const preAuthRoute = sessionStorage.getItem('preAuthRoute') || '/';
-    
+
         // Clear the saved route from sessionStorage to avoid unintended redirects in the future
         sessionStorage.removeItem('preAuthRoute');
-        
+
         router.push(preAuthRoute);
-    } else {
+      } else {
         setLocalError(
           authError || "Failed to log in. Please check your credentials."
         );
@@ -85,7 +85,7 @@ export default function Login() {
               />
             </Div>
             <Div className="cs-auth_button_container">
-              <button type="submit" className="cs-auth_button cs-radius_5">
+              <button type="submit" className="cs-btn cs-style1 cs-auth_button">
                 Login
               </button>
               <Button

@@ -49,7 +49,7 @@ export default function ForgotPassword() {
               />
             </Div>
             <Div className="cs-auth_button_container">
-              <button type="submit" className="cs-auth_button cs-radius_5">
+              <button type="submit" className="cs-btn cs-style1 cs-auth_button">
                 Reset password
               </button>
             </Div>
