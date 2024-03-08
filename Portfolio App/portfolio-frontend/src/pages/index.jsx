@@ -40,7 +40,7 @@ export default function Home() {
           />
         </div>
 
-        {/* Start Portfolio Section */}
+        {/* Start Portfolio Section
         <Spacing lg="60" md="60" />
         <PortfoliosExplore
           title="Explore Portfolio's"
@@ -48,7 +48,7 @@ export default function Home() {
           variant="cs-style1 text-center"
           btnLink="search"
           btnText="Search Here"
-        />
+        /> */}
       </Layout>
     </>
   );

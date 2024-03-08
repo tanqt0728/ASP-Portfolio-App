@@ -28,9 +28,8 @@ export default function Header({ variant }) {
   return (
     <>
       <header
-        className={`cs-site_header cs-style1 text-uppercase ${
-          variant ? variant : ""
-        } cs-sticky_header ${isSticky ? "cs-sticky_header_active" : ""}`}
+        className={`cs-site_header cs-style1 text-uppercase ${variant ? variant : ""
+          } cs-sticky_header ${isSticky ? "cs-sticky_header_active" : ""}`}
       >
         <Div className="cs-main_header">
           <Div className="container">
@@ -53,14 +52,14 @@ export default function Header({ variant }) {
                     </li>
                     {user ? (
                       <>
-                        <li>
+                        {/* <li>
                           <Link
                             href="/profile"
                             onClick={() => setMobileToggle(false)}
                           >
                             Profile
                           </Link>
-                        </li>
+                        </li> */}
                         <li>
                           <Link
                             href="/portfolio/edit"
@@ -69,14 +68,14 @@ export default function Header({ variant }) {
                             Portfolio
                           </Link>
                         </li>
-                        <li>
+                        {/* <li>
                           <Link
                             href="/search"
                             onClick={() => setMobileToggle(false)}
                           >
                             Search
                           </Link>
-                        </li>
+                        </li> */}
                         <li>
                           <Link href="/" onClick={handleLogout}>
                             Logout
@@ -85,14 +84,14 @@ export default function Header({ variant }) {
                       </>
                     ) : (
                       <>
-                        <li>
+                        {/* <li>
                           <Link
                             href="/search"
                             onClick={() => setMobileToggle(false)}
                           >
                             Search
                           </Link>
-                        </li>
+                        </li> */}
                         <li>
                           <Link
                             href="/auth/signup"
