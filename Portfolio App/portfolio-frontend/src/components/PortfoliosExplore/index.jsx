@@ -1,7 +1,7 @@
 import React from "react";
 import Div from '../Div';
 import SectionHeading from '../SectionHeading';
-import PortfolioSlider from '../Slider/PortfolioSlider';
+import PortfolioSlider from '../Slider';
 import Spacing from '../Spacing';
 import Button from '../Button';
 

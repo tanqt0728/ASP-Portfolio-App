@@ -1,6 +1,6 @@
 import * as React from "react";
 import Head from "next/head";
-import FunFact from "../components/FunFact";
+import Redirect from "../components/Redirect";
 import Hero from "../components/Hero";
 import Layout from "../components/Layout";
 import Spacing from "../components/Spacing";
@@ -27,10 +27,10 @@ export default function Home() {
         <Spacing lg="60" md="60" />
         {/* End Hero Section */}
 
-        {/* Start FunFact Section */}
+        {/* Start Redirect Section */}
         <Spacing lg="0" md="40" />
         <div className="container">
-          <FunFact
+          <Redirect
             variant="cs-type1"
             title="Craft Your Digital Identity"
             subtitle="Create your personalized portfolio with Pixel Projects today."
